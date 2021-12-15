@@ -119,7 +119,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header .social-links a:hover {
-  background: #1c7d32;
+  background: #00b0dc;
 }
 
 @media (max-width: 992px) {
@@ -187,7 +187,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
-  color: #00b0dc;
+  color: #1c7d32;
   text-decoration: none;
 }
 
@@ -767,7 +767,7 @@ section .container {
 }
 
 .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
-  background: #1c7d32;
+  background: #00b0dc;
 }
 
 .portfolio #portfolio-flters li:last-child {
@@ -1078,6 +1078,9 @@ section .container {
 float: right;    
  margin: 0 0 0 15px;
 }
+
+          
+
 /*--------------------------------------------------------------
 # Credits
 --------------------------------------------------------------*/
