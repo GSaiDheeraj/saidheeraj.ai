@@ -1,3 +1,3 @@
 # saidheeraj
 
-https://gsaidheeraj.github.io/saidheeraj/
+https://gsaidheeraj.github.io/saidheeraj.ai/
