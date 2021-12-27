@@ -119,7 +119,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header .social-links a:hover {
-  background: #00b0dc;
+  background: #1c7d32;
 }
 
 @media (max-width: 992px) {
@@ -281,7 +281,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   top: 0;
   right: 0;
-  background: #09203a;
+  background: #000000;
 }
 
 #header.header-top .social-links, #header.header-top h2 {
@@ -487,7 +487,7 @@ section .container {
   display: flex;
   align-items: center;
   padding: 20px;
-  background: #09203a;
+  background: #000000;
   transition: ease-in-out 0.3s;
 }
 
@@ -537,7 +537,7 @@ section .container {
 
 .testimonials .testimonial-item h4 {
   font-size: 14px;
-  color: #999;
+  color: #000;
   margin: 0 0 0 45px;
 }
 
@@ -660,7 +660,7 @@ section .container {
 --------------------------------------------------------------*/
 .services .icon-box {
   text-align: center;
-  background: #09203a;
+  background: #000000;
   padding: 40px 40px;
   transition: all ease-in-out 0.3s;
   margin: 10px
@@ -767,7 +767,7 @@ section .container {
 }
 
 .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
-  background: #00b0dc;
+  background: #1c7d32;
 }
 
 .portfolio #portfolio-flters li:last-child {
