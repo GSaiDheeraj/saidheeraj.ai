@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Blog</title>
-    <style>
+    <title>My Awesome Blog - Finance</title> <style>
         body {
             font-family: sans-serif;
             margin: 0;
@@ -17,6 +16,12 @@
             color: #fff;
             text-align: center;
             padding: 20px 0;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
         }
 
         .container {
@@ -50,10 +55,6 @@
 
         .footer {
             text-align: center;
-            padding: 3px 0;
-            /* background-color: #333;
-            color: #fff; */
-            /* padding: 5px; */
             margin-left: 8em;
             margin-right: 9em;
         }
@@ -64,48 +65,117 @@
     <div class="header">
         <h1>Welcome to My Blog</h1>
         <p>Sharing thoughts and ideas...</p>
+        <br>
+        <a href="?type=Finance">Finance</a>
+        <a href="?type=SoftwareEngineering">Software Engineering</a>
+        <a href="?type=DataScience">Data Science</a>
+        <a href="?type=GeoPolitics">GeoPolitics</a>
     </div>
 
-    <div class="container">
-
-        <div class="blog-post">
-            <h2><a href="blog1.html">China’s Technological Leap: Strategies, Growth, and Global Leadership</a></h2>
-            <p>China's rise as a technological powerhouse is one of the most significant shifts in the global economic landscape in recent decades. Once a poor country, China has rapidly evolved into a global leader in various high-tech fields, including artificial intelligence (AI), solar energy, drones, and new energy vehicles. This transformation is largely the result of deliberate....</p>
+    <div class="container" id="blogContainer">
         </div>
 
-        <div class="blog-post">
-            <h2><a href="blog2.html">A Comprehensive Guide to Finance and Business</a></h2>
-            <p>In this article, we explore key concepts in economics, finance, and business strategy. This guide is designed to help individuals navigate the complex world of finance, offering practical insights for better decision-making. Whether you're looking to understand investment opportunities, the intricacies of financial markets, or core business principles, this guide provides a foundational overview.</p>
-        </div>
+    <div class="footer" style="text-align: center">
+        <p>&nbsp;Sai Dheeraj Blog</p>
+    </div>
+    <div class="footer" style="text-align: center">
+        <p><a href="https://gsaidheeraj.github.io/saidheeraj.ai/"><u>saidheeraj.ai</u></a></p>
+    </div>
 
-        <div class="blog-post">
-            <h2><a href="blog3.html">Understanding Financial Valuation and Business Strategy</a></h2>
-            <p>This article explores various financial concepts used in stock and bond valuation, business strategy tools, and the key financial statements that help companies evaluate their financial performance.</p>
-        </div>
+    <script>
+        const blogPosts = {
+            Finance: [
+                {
+                    title: "A Comprehensive Guide to Finance and Business",
+                    summary: "In this article, we explore key concepts in economics, finance, and business strategy. This guide is designed to help individuals navigate the complex world of finance, offering practical insights for better decision-making. Whether you're looking to understand investment opportunities, the intricacies of financial markets, or core business principles, this guide provides a foundational overview.",
+                    link: "blog2.html"
+                },
+                {
+                    title: "Understanding Financial Valuation and Business Strategy",
+                    summary: "This article explores various financial concepts used in stock and bond valuation, business strategy tools, and the key financial statements that help companies evaluate their financial performance.",
+                    link: "blog3.html"
+                },
+                {
+                    title: "An Overview of Financial Statements and Analysis Techniques",
+                    summary: "In this article, we will explore key financial concepts such as assets, liabilities, net assets, cash flow forecasts, and financial statement analysis. These concepts are fundamental in understanding a company's financial health and making informed decisions.",
+                    link: "blog4.html"
+                },
+                {
+                    title: "Understanding Capital Budgeting and Macroeconomics",
+                    summary: "Capital budgeting and macroeconomics are two crucial concepts that help businesses and individuals make informed investment decisions and understand the broader economic environment. This article explores the key principles of capital budgeting and the essential aspects of macroeconomics, providing a comprehensive overview.",
+                    link: "blog5.html"
+                },
+                {
+                    title: "Understanding Unemployment, Macroeconomics, and ESG",
+                    summary: "This article covers several key topics, including types of unemployment, inflation, monetary and fiscal policy, and the growing importance of Environmental, Social, and Governance (ESG) practices in business and investment. These subjects are essential to understanding both the economic landscape and how companies are increasingly being evaluated based on their sustainability practices.",
+                    link: "blog6.html"
+                },
+                {
+                    title: "ESG vs Non-ESG: The Real Impact on Investments and Portfolio Construction",
+                    summary: "The debate between ESG (Environmental, Social, and Governance) and non-ESG stocks has gained significant traction as investors look to align their financial strategies with sustainability goals. While ESG-focused companies have demonstrated better risk management.....",
+                    link: "blog7.html"
+                }
 
-        <div class="blog-post">
-          <h2><a href="blog4.html">An Overview of Financial Statements and Analysis Techniques</a></h2>
-          <p>In this article, we will explore key financial concepts such as assets, liabilities, net assets, cash flow forecasts, and financial statement analysis. These concepts are fundamental in understanding a company's financial health and making informed decisions.</p>
-        </div>
+            ],
+            SoftwareEngineering: [
+                // Add Software Engineering posts here
+                // {
+                //     title: "Introduction to React",
+                //     summary: "Learn the basics of React and build your first component.",
+                //     link: "react-intro.html"
+                // },
+                // {
+                //     title: "Python Best Practices",
+                //     summary: "Improve your Python coding skills with these best practices.",
+                //     link: "python-best-practices.html"
+                // }
+            ],
+            DataScience: [
+                // Add Data Science posts here
+                // {
+                //     title: "Data Visualization with Python",
+                //     summary: "Explore data visualization techniques using Python's Matplotlib and Seaborn.",
+                //     link: "data-viz.html"
+                // },
+                // {
+                //     title: "Machine Learning Basics",
+                //     summary: "A beginner's guide to machine learning concepts.",
+                //     link: "ml-basics.html"
+                // }
+            ],
+            GeoPolitics: [
+                // Add GeoPolitics posts here
+                {
+                    title: "China’s Technological Leap: Strategies, Growth, and Global Leadership",
+                    summary: "China's rise as a technological powerhouse is one of the most significant shifts in the global economic landscape in recent decades. Once a poor country, China has rapidly evolved into a global leader in various high-tech fields, including artificial intelligence (AI), solar energy, drones, and new energy vehicles. This transformation is largely the result of deliberate....",
+                    link: "blog1.html"
+                },
+            ]
+        };
 
-        <div class="blog-post">
-            <h2><a href="blog5.html">Understanding Capital Budgeting and Macroeconomics</a></h2>
-            <p>Capital budgeting and macroeconomics are two crucial concepts that help businesses and individuals make informed investment decisions and understand the broader economic environment. This article explores the key principles of capital budgeting and the essential aspects of macroeconomics, providing a comprehensive overview.</p>
-        </div>
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
 
-        <div class="blog-post">
-            <h2><a href="blog6.html">Understanding Unemployment, Macroeconomics, and ESG</a></h2>
-            <p>This article covers several key topics, including types of unemployment, inflation, monetary and fiscal policy, and the growing importance of Environmental, Social, and Governance (ESG) practices in business and investment. These subjects are essential to understanding both the economic landscape and how companies are increasingly being evaluated based on their sustainability practices.</p>
-        </div>
+        const blogType = getParameterByName('type') || document.title.split(' - ')[1]; // Get type from query or title
+        const container = document.getElementById('blogContainer');
+        container.innerHTML = ''; // Clear existing content
 
-        <div class="blog-post">
-            <h2><a href="blog7.html">ESG vs Non-ESG: The Real Impact on Investments and Portfolio Construction</a></h2>
-            <p>The debate between ESG (Environmental, Social, and Governance) and non-ESG stocks has gained significant traction as investors look to align their financial strategies with sustainability goals. While ESG-focused companies have demonstrated better risk management.....</p>
-        </div>
-
-        </div>
-
-    <div class="footer" style="float: left" style="margin-left: 40em"><p>&nbsp;Sai Dheeraj Blog</p></div><div class="footer" style="float: right"><p><a href="https://gsaidheeraj.github.io/saidheeraj.ai/"><u>saidheeraj.ai</u></a></p></div>
-
+        if (blogPosts[blogType]) {
+            blogPosts[blogType].forEach(post => {
+                container.innerHTML += `
+                    <div class="blog-post">
+                        <h2><a href="${post.link}">${post.title}</a></h2>
+                        <p>${post.summary}</p>
+                    </div>
+                `;
+            });
+        }
+    </script>
 </body>
 </html>
