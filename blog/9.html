@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataScience</title>
+    <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+          }
+        };
+      </script>
+      <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="-why-swiggy-uses-sentence-transformers-instead-of-small-language-models-for-search-"><strong>Why Swiggy Uses Sentence Transformers Instead of Small Language Models for Search</strong></h1>
+        <p>Swiggy, one of India’s leading food delivery platforms, relies heavily on <strong>search and recommendation systems</strong> to provide users with relevant restaurant and dish suggestions. While many companies experiment with <strong>Small Language Models (SLMs)</strong> for search, Swiggy has opted for a more efficient and accurate approach—<strong>Sentence Transformers</strong>.</p>
+        <ul>
+            <li>Reference Link: <a href="https://bytes.swiggy.com/improving-search-relevance-in-hyperlocal-food-delivery-using-small-language-models-ecda2acc24e6" target="_blank">Swiggy Blog</a></li>
+            <li>(small) Language Model &#x2260; Small Language Model</li>
+            <li>Models swiggy used: <a href="https://huggingface.co/sentence-transformers/all-mpnet-base-v2" target="_blank">all-mpnet-base-v2</a>, <a href="https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2" target="_blank">all-MiniLM-L6-v2 </a></li>
+        </ul>
+        <p>In this article, we’ll explore why Swiggy does not use SLMs for search and how Sentence Transformers outperform them in key areas like efficiency, accuracy, and computational cost.</p>
+        <hr>
+        <h2 id="-why-swiggy-doesn-t-use-small-language-models-slms-for-search-"><strong>Why Not to Use Small Language Models (SLMs) for Search</strong></h2>
+        <h3 id="-1-search-requires-efficient-semantic-matching-not-text-generation-"><strong>1. Search Requires Efficient Semantic Matching, Not Text Generation</strong></h3>
+        <p>SLMs, such as GPT-2 or DistilBERT, are designed primarily for <strong>text generation and auto-completion</strong>. These models work in an <strong>auto-regressive (AR) manner</strong>, predicting the next word in a sequence. The mathematical formulation is:</p>
+        <p>$P(X) = \prod_{t=1}^{T} P(x_t | x_1, x_2, ..., x_{t-1}; \theta)$</p>
+        <p></p>
+        <p>where each token ( x_t ) depends on the previous context. This formulation is useful for chatbots and content generation but is <strong>inefficient for search</strong>, where the goal is to <strong>retrieve semantically similar documents efficiently</strong>.</p>
+        <h3 id="-2-latency-and-computational-cost-issues-"><strong>2. Latency and Computational Cost Issues</strong></h3>
+        <p>SLMs are <strong>compute-heavy</strong>, requiring significant processing power to generate responses dynamically. Search queries on Swiggy need to be <strong>real-time</strong>, meaning latency must be minimal. Running an <strong>SLM for every search query</strong> would be slow and costly compared to embedding-based retrieval methods like Sentence Transformers.</p>
+        <hr>
+        <h2 id="-why-swiggy-uses-sentence-transformers-for-search-"><strong>Why to Use Sentence Transformers for Search</strong></h2>
+        <h3 id="-1-sentence-transformers-enable-fast-and-accurate-semantic-search-"><strong>1. Sentence Transformers Enable Fast and Accurate Semantic Search</strong></h3>
+        <p>Instead of generating text, <strong>Sentence Transformers</strong> convert search queries and menu items into <strong>fixed-length vector embeddings</strong> in a high-dimensional space:</p>
+        <p>$[
+        \mathbf{h} = f_{\theta}(X) \in \mathbb{R}^d
+        ]$</p>
+        <p>where $( f_{\theta} )$ is the transformer function that maps a sentence ( X ) to a vector of dimension ( d ). The key advantage is that once the restaurant and menu embeddings are precomputed, search queries can be matched via <strong>cosine similarity</strong>:</p>
+        <p>$[
+        S(\mathbf{h_1}, \mathbf{h_2}) = \frac{\mathbf{h_1} \cdot \mathbf{h_2}}{|\mathbf{h_1}| |\mathbf{h_2}|}
+        ]$</p>
+        <p>This approach is significantly <strong>faster and computationally cheaper</strong> than running a full-fledged language model every time a user searches for “Biryani near me.”</p>
+        <h3 id="-2-contrastive-learning-improves-search-relevance-"><strong>2. Contrastive Learning Improves Search Relevance</strong></h3>
+        <p>Sentence Transformers are trained using <strong>contrastive learning</strong>, where similar sentences (like “Chicken Biryani” and “Hyderabadi Biryani”) have embeddings that are close together, while dissimilar ones (like “Paneer Butter Masala” and “Cold Coffee”) are far apart.</p>
+        <p>The <strong>contrastive loss function</strong> ensures this separation:</p>
+        <p>$[
+        L = (1 - y) \max(0, S(\mathbf{h_1}, \mathbf{h_2}) - m_1) + y \max(0, m_2 - S(\mathbf{h_1}, \mathbf{h_2}))
+        ]$</p>
+        <p>This improves <strong>search accuracy</strong> by prioritizing relevant results without requiring complex text generation.</p>
+        <hr>
+        <h2 id="understanding SLM's"><strong>Understanding Small Language Models (SLMs)</strong></h2>
+        <p>SLMs are lightweight versions of large language models (LLMs) with fewer parameters, optimized for tasks requiring lower computational resources.</p>
+        <p><strong>Characteristics</strong>:</p>
+        <ul>
+        <li><p>Typically have <strong>millions to a few billion parameters</strong>.</p>
+        </li>
+        <li><p>Can <strong>generate, summarize, and analyze text</strong> like larger LLMs but are more constrained in reasoning and knowledge depth.</p>
+        </li>
+        <li><p>Used for <strong>low-latency NLP tasks</strong>, such as chatbot responses, document summarization, or text classification.</p>
+        </li>
+        <li><p>Fine-tunable for specific domains with relatively small datasets.</p>
+        </li>
+        <li><p>Examples: <strong>GPT-2 (small version), Mistral-7B, TinyBERT, DistilBERT</strong>.</p>
+        </li>
+        </ul>
+        <p><strong>Use Cases</strong>:</p>
+        <ul>
+        <li><p>Text completion &amp; generation</p>
+        </li>
+        <li><p>Summarization</p>
+        </li>
+        <li><p>Question answering</p>
+        </li>
+        <li><p>Named entity recognition (NER)</p>
+        </li>
+        </ul>
+        <p>SLMs are <strong>auto-regressive (AR)</strong> or <strong>masked language models (MLM)</strong>, trained to generate text by predicting the next token (AR) or filling in masked words (MLM).</p>
+        <h3 id="-mathematical-formulation-"><strong>Mathematical Formulation</strong></h3>
+        <h4 id="-a-auto-regressive-models-e-g-gpt-distilbert-"><strong>(a) Auto-Regressive Models (e.g., GPT, DistilBERT)</strong></h4>
+        <p>SLMs are trained using a probabilistic autoregressive model, where given a sequence of tokens $X = (x_1, x_2, ..., x_T)X=(x1​,x2​,...,xT​)$, the model predicts the next token $x_{t+1}$​ by maximizing the conditional probability:</p>
+        <p>$P(X) = \prod_{t=1}^{T} P(x_t | x_1, x_2, ..., x_{t-1}; \theta)$</p>
+        <p>where $\theta$ represents the model parameters learned during training.</p>
+        <p>The loss function used is typically the <strong>cross-entropy loss</strong>:</p>
+        <p>$L = -\sum_{t=1}^{T} \log P(x_t | x_1, x_2, ..., x_{t-1}; \theta)$</p>
+        <p>which ensures that the probability of generating the correct next token is maximized.</p>
+        <h4 id="-b-masked-language-models-e-g-bert-tinybert-"><strong>(b) Masked Language Models (e.g., BERT, TinyBERT)</strong></h4>
+        <p>In <strong>masked language models (MLM)</strong>, some tokens xtx_txt​ are randomly masked (replaced with [MASK]), and the model is trained to predict them based on context.</p>
+        <p>$P(x_t | x_1, x_2, ..., x_{t-1}, x_{t+1}, ..., x_T)$</p>
+        <p>This formulation allows the model to learn <strong>bidirectional context</strong>, unlike autoregressive models, which are left-to-right.</p>
+        <hr>
+        <h2 id="understanding Sentence Transformers"><strong>Understanding Sentence Transformers</strong></h2>
+        <p><strong>Definition</strong>:Sentence Transformers are a special type of <strong>bi-encoder model</strong> designed for efficient <strong>semantic similarity</strong> tasks, like text embedding and search.</p>
+        <p><strong>Characteristics</strong>:</p>
+        <ul>
+        <li><p>Based on <strong>Transformer</strong> architectures but optimized for <strong>sentence-level embeddings</strong>.</p>
+        </li>
+        <li><p>Outputs <strong>fixed-size vector representations</strong> of sentences, making them ideal for <strong>semantic search, clustering, and retrieval</strong>.</p>
+        </li>
+        <li><p>Uses <strong>contrastive learning (Siamese network)</strong> to learn meaningful sentence embeddings.</p>
+        </li>
+        <li><p>Examples: <strong>SBERT (Sentence-BERT), MiniLM, MPNet</strong>.</p>
+        </li>
+        </ul>
+        <p><strong>Use Cases</strong>:</p>
+        <ul>
+        <li><p>Semantic search &amp; information retrieval</p>
+        </li>
+        <li><p>Text similarity &amp; clustering</p>
+        </li>
+        <li><p>Sentence embeddings for downstream ML tasks</p>
+        </li>
+        <li><p>Q&amp;A matching in vector databases (e.g., Qdrant, Milvus, FAISS)</p>
+        </li>
+        </ul>
+        <h3 id="-mathematical-formulation-"><strong>Mathematical Formulation</strong></h3>
+        <p>Given an input sequence $X=(x_1, x_2, ..., x_T)$, the transformer model <strong>maps</strong> it to a fixed-dimensional embedding h\mathbf{h}h:</p>
+        <p>$\mathbf{h} = f_{\theta}(X) \in \mathbb{R}^d$</p>
+        <p>where:</p>
+        <ul>
+        <li><p>$f_{\theta}$ is the transformer function with trainable parameters $\theta$,</p>
+        </li>
+        <li><p>$d$ is the dimension of the embedding (e.g., $d=768$ for BERT).</p>
+        </li>
+        </ul>
+        <h3 id="-a-cosine-similarity-for-sentence-similarity-"><strong>(a) Cosine Similarity for Sentence Similarity</strong></h3>
+        <p>Sentence transformers are optimized to ensure that similar sentences have high cosine similarity. Given two sentence embeddings $\mathbf{h_1}, \mathbf{h_2}$​, the similarity is computed as:</p>
+        <p>$S(\mathbf{h_1}, \mathbf{h_2}) = \frac{\mathbf{h_1} \cdot \mathbf{h_2}}{\|\mathbf{h_1}\| \|\mathbf{h_2}\|}$​</p>
+        <p>where:</p>
+        <ul>
+            <li><p>$\mathbf{h_1} \cdot \mathbf{h_2}$ is the dot product,</p></li>
+            <li><p>$\|\mathbf{h_1}\|$ and $\|\mathbf{h_2}\|$ are the magnitudes of the vectors.</p></li>        
+        </ul>
+        <h3 id="-b-contrastive-loss-used-in-sentence-transformers-"><strong>(b) Contrastive Loss (Used in Sentence Transformers)</strong></h3>
+        <p>To train the model to differentiate between similar and dissimilar sentence pairs, contrastive loss is used:</p>
+        <p>$L = (1 - y) \max(0, S(\mathbf{h_1}, \mathbf{h_2}) - m_1) + y \max(0, m_2 - S(\mathbf{h_1}, \mathbf{h_2}))$</p>
+        <p>where:</p>
+        <ul>
+        <li><p>$y \in \{0,1\}$ is the ground truth label (1 if sentences are similar, 0 otherwise),</p>
+        </li>
+        <li><p>$m_1, m_2$ are margin hyperparameters.</p>
+        </li>
+        </ul>
+        <p>Alternatively, <strong>triplet loss</strong> is used:</p>
+        <p>$L = \max(0, S(\mathbf{h_a}, \mathbf{h_p}) - S(\mathbf{h_a}, \mathbf{h_n}) + m)$</p>
+        <p>where:</p>
+        <ul>
+            <li><p>$\mathbf{h_a}$ is the <strong>anchor sentence</strong>,</p></li>
+            <li><p>$\mathbf{h_p}$ is a <strong>positive (similar) sentence</strong>,</p></li>
+            <li><p>$\mathbf{h_n}$ is a <strong>negative (dissimilar) sentence</strong>,</p></li>
+            <li><p>$m$ is a margin parameter.</p></li>
+        </ul>
+        <hr>
+        <h2 id="-key-differences-slms-vs-sentence-transformers-in-search-"><strong>Key Differences: SLMs vs. Sentence Transformers in Search</strong></h2>
+        <table border="1">
+        <thead>
+        <tr>
+        <th>Feature</th>
+        <th>Small Language Models (SLMs)</th>
+        <th>Sentence Transformers</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>Purpose</strong></td>
+        <td>General-purpose text generation and NLP tasks</td>
+        <td>Efficient sentence-level embedding & similarity tasks</td>
+        </tr>
+        <tr>
+        <td><strong>Output</strong></td>
+        <td>Token-by-token text output</td>
+        <td>Fixed-size numerical vector (embedding)</td>
+        </tr>
+        <tr>
+        <td><strong>Computational Cost</strong></td>
+        <td>Can be high, especially for large models</td>
+        <td>Optimized for speed & efficiency</td>
+        </tr>
+        <tr>
+        <td><strong>Use Case</strong></td>
+        <td>Chatbots, summarization, reasoning</td>
+        <td>Semantic search, clustering, retrieval</td>
+        </tr>
+        <tr>
+        <td><strong>Primary Task</strong></td>
+        <td>Text generation, auto-completion</td>
+        <td>Semantic search, embedding-based retrieval</td>
+        </tr>
+        <tr>
+        <td><strong>Loss Function</strong></td>
+        <td>Cross-entropy loss</td>
+        <td>Contrastive/triplet loss</td>
+        </tr>
+        <tr>
+        <td><strong>Output</strong></td>
+        <td>Token probabilities</td>
+        <td>Fixed-dimensional vector embeddings</td>
+        </tr>
+        <tr>
+        <td><strong>Computational Cost</strong></td>
+        <td>High (token-by-token inference)</td>
+        <td>Low (efficient embedding retrieval)</td>
+        </tr>
+        <tr>
+        <td><strong>Use Case</strong></td>
+        <td>Text completion, chatbots, summarization</td>
+        <td>Search, recommendation systems</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr>
+        <h2 id="-conclusion-sentence-transformers-are-the-future-of-search-"><strong>Conclusion: Sentence Transformers Are the Future of Search</strong></h2>
+        <p>Swiggy’s decision to use <strong>Sentence Transformers instead of Small Language Models (SLMs) for search</strong> is a strategic one. By leveraging <strong>efficient embedding-based retrieval</strong>, Swiggy ensures:</p>
+        <ul>
+        <li>Faster and real-time search results.</li>
+        <li>Better semantic understanding, improving search accuracy.</li>
+        <li>Lower computational costs, making the system scalable.</li>
+        </ul>
+        <p>For companies handling large-scale search queries, <strong>Sentence Transformers offer a superior alternative to SLMs</strong>. As search technology evolves, we can expect more platforms to move towards embedding-based approaches for <strong>speed, efficiency, and accuracy</strong>.</p>
+        
+        
+    </div>
+    <div class="footer"><p>&nbsp;Sai Dheeraj Blog</p></div><div class="footer"><p><a href="https://gsaidheeraj.github.io/saidheeraj.ai/"><u>saidheeraj.ai</u></a></p></div>
+
+</body>
+</html>
