@@ -5,12 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoPolitics</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to update visit count in localStorage
+        function updateVisitCount() {
+            let visits = localStorage.getItem('visitCount');
+            visits = visits ? parseInt(visits) + 1 : 1;
+            localStorage.setItem('visitCount', visits);
+            document.getElementById('visitCount').innerText = visits;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateVisitCount();
+            updateGlobalVisitCount();
+        });
+    </script>
 </head>
 <body>
 
     <div class="container">
     
-        <!-- <p>THIS Is Why Europe Wants Ukraine to WIN – BIG!</p> -->
+        <p>Visits: <span id="visitCount"></span></p>
         <h1 id="the-threat-of-nato-s-collapse-a-look-at-ukraine-putin-and-the-future-of-europe">The Threat of NATO&#39;s Collapse: A Look at Ukraine, Putin, and the Future of Europe</h1>
         <p>In the midst of ongoing tensions between Russia and Ukraine, Ukrainian President Volodymyr Zelenskyy issued a dire warning: \&quot;If Ukraine falls, NATO will burn.\&quot; This statement encapsulates the high stakes of the current conflict and highlights the potential dangers to Europe, particularly NATO, if Russia&#39;s ambitions extend beyond Ukraine. The situation raises critical questions about the role of the U.S. in NATO, the trustworthiness of Russia&#39;s leader, and the long-term security of Europe. </p>
         <h2 id="zelenskyy-s-warning-and-the-future-of-nato">Zelenskyy&#39;s Warning and the Future of NATO</h2>

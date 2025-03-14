@@ -5,11 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finance</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to update visit count in localStorage
+        function updateVisitCount() {
+            let visits = localStorage.getItem('visitCount');
+            visits = visits ? parseInt(visits) + 1 : 1;
+            localStorage.setItem('visitCount', visits);
+            document.getElementById('visitCount').innerText = visits;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateVisitCount();
+            updateGlobalVisitCount();
+        });
+    </script>
 </head>
 <body>
 
     <div class="container">
-    
+        <p>Visits: <span id="visitCount"></span></p>
         <h1 data-start="0" data-end="61">An Overview of Financial Statements and Analysis Techniques</h1>
         <p data-start="63" data-end="322">In this article, we will explore key financial concepts such as assets, liabilities, net assets, cash flow forecasts, and financial statement analysis. These concepts are fundamental in understanding a company's financial health and making informed decisions.</p>
         <h2 data-start="324" data-end="347">Understanding Assets</h2>

@@ -5,11 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finance</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to update visit count in localStorage
+        function updateVisitCount() {
+            let visits = localStorage.getItem('visitCount');
+            visits = visits ? parseInt(visits) + 1 : 1;
+            localStorage.setItem('visitCount', visits);
+            document.getElementById('visitCount').innerText = visits;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateVisitCount();
+            updateGlobalVisitCount();
+        });
+    </script>
 </head>
 <body>
 
     <div class="container">
-    
+        <p>Visits: <span id="visitCount"></span></p>
         <h1 data-start="0" data-end="52">Understanding Capital Budgeting and Macroeconomics</h1>
         <p data-start="54" data-end="379">Capital budgeting and macroeconomics are two crucial concepts that help businesses and individuals make informed investment decisions and understand the broader economic environment. This article explores the key principles of capital budgeting and the essential aspects of macroeconomics, providing a comprehensive overview.</p>
         <h2 data-start="381" data-end="410">What is Capital Budgeting?</h2>

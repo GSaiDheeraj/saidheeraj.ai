@@ -13,10 +13,25 @@
       </script>
       <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script>
+      // Function to update visit count in localStorage
+      function updateVisitCount() {
+          let visits = localStorage.getItem('visitCount');
+          visits = visits ? parseInt(visits) + 1 : 1;
+          localStorage.setItem('visitCount', visits);
+          document.getElementById('visitCount').innerText = visits;
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+          updateVisitCount();
+          updateGlobalVisitCount();
+      });
+  </script>
 </head>
 <body>
 
     <div class="container">
+        <p>Visits: <span id="visitCount"></span></p>
         <h1 id="vllm-solving-latency-and-throughput-challenges-in-large-language-models">vLLM: Solving Latency and Throughput Challenges in Large Language Models</h1>
         <h2 id="introduction">Introduction</h2>
         <p>Large Language Models (LLMs) have revolutionized AI applications, enabling advanced natural language processing (NLP) tasks such as chatbots, code generation, and content creation. However, deploying these models at scale comes with significant challenges, particularly in terms of <strong>latency and throughput</strong>. Traditional inference pipelines struggle with the computational demands of LLMs, leading to slow response times and high operational costs.</p>

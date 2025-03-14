@@ -5,11 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Macro Economics</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to update visit count in localStorage
+        function updateVisitCount() {
+            let visits = localStorage.getItem('visitCount');
+            visits = visits ? parseInt(visits) + 1 : 1;
+            localStorage.setItem('visitCount', visits);
+            document.getElementById('visitCount').innerText = visits;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateVisitCount();
+            updateGlobalVisitCount();
+        });
+    </script>
 </head>
 <body>
 
     <div class="container">
         <p>Date: 02/March/2025</p>
+        <p>Visits: <span id="visitCount"></span></p>
         <h1 id="china-s-technological-leap-strategies-growth-and-global-leadership">China’s Technological Leap: Strategies, Growth, and Global Leadership</h1>
         <p>China's rise as a technological powerhouse is one of the most significant shifts in the global economic landscape in recent decades. Once a poor country, China has rapidly evolved into a global leader in various high-tech fields, including artificial intelligence (AI), solar energy, drones, and new energy vehicles. This transformation is largely the result of deliberate, state-driven industrial policies that prioritize long-term innovation and growth. Here’s an in-depth look at how China’s government-led strategies, investments, and educational system have shaped its technological ascent and what the world can learn from its success.</p>
         <h2 id="a-state-driven-model-for-technological-advancement">A State-Driven Model for Technological Advancement</h2>

@@ -5,11 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finance</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to update visit count in localStorage
+        function updateVisitCount() {
+            let visits = localStorage.getItem('visitCount');
+            visits = visits ? parseInt(visits) + 1 : 1;
+            localStorage.setItem('visitCount', visits);
+            document.getElementById('visitCount').innerText = visits;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateVisitCount();
+            updateGlobalVisitCount();
+        });
+    </script>
 </head>
 <body>
 
     <div class="container">
-    
+        <p>Visits: <span id="visitCount"></span></p>
         <h1 data-start="0" data-end="53">Understanding Unemployment, Macroeconomics, and ESG</h1>
         <p data-start="55" data-end="444">This article covers several key topics, including types of unemployment, inflation, monetary and fiscal policy, and the growing importance of Environmental, Social, and Governance (ESG) practices in business and investment. These subjects are essential to understanding both the economic landscape and how companies are increasingly being evaluated based on their sustainability practices.</p>
         <h2 data-start="446" data-end="470">Types of Unemployment</h2>

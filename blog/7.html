@@ -5,11 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finance</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to update visit count in localStorage
+        function updateVisitCount() {
+            let visits = localStorage.getItem('visitCount');
+            visits = visits ? parseInt(visits) + 1 : 1;
+            localStorage.setItem('visitCount', visits);
+            document.getElementById('visitCount').innerText = visits;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateVisitCount();
+            updateGlobalVisitCount();
+        });
+    </script>
 </head>
 <body>
 
     <div class="container">
-    
+        <p>Visits: <span id="visitCount"></span></p>
         <h1 data-start="0" data-end="75">ESG vs Non-ESG: The Real Impact on Investments and Portfolio Construction</h1>
         <h2 data-start="77" data-end="118">Introduction to ESG and Non-ESG Stocks</h2>
         <p data-start="120" data-end="659">The debate between ESG (Environmental, Social, and Governance) and non-ESG stocks has gained significant traction as investors look to align their financial strategies with sustainability goals. While ESG-focused companies have demonstrated better risk management and resilience in the face of market volatility, the real-world performance of these stocks presents both opportunities and challenges. Understanding how ESG principles contribute to long-term investment success can provide valuable insights into building a robust portfolio.</p>
