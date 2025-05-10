@@ -8,6 +8,38 @@ body {
     color: #333;
 }
 
+
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+  }
+
+  [data-theme="dark"] {
+    --background-color: #121212;
+    --text-color: #ffffff;
+  }
+
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+
+
+
 /* Layout */
 .container {
     margin-left: auto;
@@ -34,7 +66,7 @@ body {
     text-align: right;
 }
 #ddesc {
-    padding-top: 40px;
+    padding-top: 25px;
     padding-left: 20px;
     grid-column: span 6;
 }
@@ -65,12 +97,12 @@ h2 {
 }
 @media (min-width: 992px) {
     h2 {
-        max-width: 300px;
+        max-width: 450px;
     }
 }
 #dpic img {
-    width: 240px;
-    height: 240px;
+    width: 190px;
+    height: 190px;
     border-radius: 120px;
 }
 .iico {
