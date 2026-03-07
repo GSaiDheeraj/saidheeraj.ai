@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: white;
-    font-family: sans-serif;
+    font-family: "Roboto Slab", monospace;
     font-size: 16px;
     line-height: 1.4;
     color: #333;
@@ -277,4 +277,13 @@ hr {
 .nodot {
     list-style-type: none;
     padding-left: 0;
+}
+
+/* Hyperlinks */
+a {
+    color: #0066cc;
+}
+
+[data-theme="dark"] a {
+    color: #66b3ff;
 }
