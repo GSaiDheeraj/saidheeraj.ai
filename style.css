@@ -340,9 +340,8 @@ kbd {
 .hero-avatar {
   width: 180px;
   height: 180px;
-  object-fit: contain;
-  background-color: var(--card-bg);
-  padding: 4px;
+  object-fit: cover;
+  object-position: top center;
   border-radius: var(--radius);
   border: 2px solid var(--border-color);
   box-shadow: var(--shadow-md);
