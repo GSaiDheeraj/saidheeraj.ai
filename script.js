@@ -5,10 +5,24 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
-  initLossCanvas();
+  initCursorGlow();
   initSearchAndFilters();
   initTerminal();
 });
+
+/* ==========================================
+   Cursor Spotlight Glow
+   ========================================== */
+function initCursorGlow() {
+  const glow = document.createElement('div');
+  glow.className = 'cursor-glow';
+  document.body.appendChild(glow);
+
+  window.addEventListener('pointermove', (e) => {
+    glow.style.setProperty('--mouse-x', `${e.clientX}px`);
+    glow.style.setProperty('--mouse-y', `${e.clientY}px`);
+  });
+}
 
 /* ==========================================
    1. Theme Toggle & Persistence
@@ -34,117 +48,6 @@ function updateThemeIcon(theme) {
   }
 }
 
-/* ==========================================
-   2. Loss Function Canvas Simulation
-   Animates a converging loss function curve J(θ)
-   ========================================== */
-function initLossCanvas() {
-  const canvas = document.getElementById('lossCanvas');
-  const lossStats = document.getElementById('lossStats');
-  if (!canvas) return;
-
-  const ctx = canvas.getContext('2d');
-  let animationFrameId;
-  let epoch = 0;
-  let points = [];
-  const maxEpochs = 300;
-
-  function resizeCanvas() {
-    canvas.width = canvas.parentElement.clientWidth || 800;
-    canvas.height = 140;
-    resetPoints();
-  }
-
-  function resetPoints() {
-    points = [];
-    epoch = 0;
-  }
-
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Draw grid lines
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-    ctx.lineWidth = 1;
-    for (let x = 0; x < canvas.width; x += 40) {
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, canvas.height);
-      ctx.stroke();
-    }
-    for (let y = 0; y < canvas.height; y += 30) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(canvas.width, y);
-      ctx.stroke();
-    }
-
-    if (epoch < maxEpochs) {
-      epoch++;
-    } else {
-      epoch = 0;
-      points = [];
-    }
-
-    // Calculate loss: decaying exponential + noise: J(θ) = 2.0 * e^(-0.02 * epoch) + noise + 0.05
-    const noise = (Math.random() - 0.5) * 0.04 * Math.exp(-0.01 * epoch);
-    const lossVal = 2.0 * Math.exp(-0.022 * epoch) + noise + 0.008;
-
-    // Map epoch (0..maxEpochs) -> X (20 .. canvas.width - 20)
-    // Map lossVal (0..2.5) -> Y (canvas.height - 20 .. 20)
-    const x = 20 + (epoch / maxEpochs) * (canvas.width - 40);
-    const y = canvas.height - 20 - (lossVal / 2.5) * (canvas.height - 40);
-
-    points.push({ x, y, lossVal });
-
-    // Draw curve
-    if (points.length > 1) {
-      ctx.beginPath();
-      ctx.moveTo(points[0].x, points[0].y);
-      for (let i = 1; i < points.length; i++) {
-        ctx.lineTo(points[i].x, points[i].y);
-      }
-      ctx.strokeStyle = '#06b6d4'; // Cyan line
-      ctx.lineWidth = 2.5;
-      ctx.stroke();
-
-      // Fill area under loss curve
-      ctx.lineTo(points[points.length - 1].x, canvas.height - 15);
-      ctx.lineTo(points[0].x, canvas.height - 15);
-      ctx.closePath();
-      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      gradient.addColorStop(0, 'rgba(6, 182, 212, 0.25)');
-      gradient.addColorStop(1, 'rgba(6, 182, 212, 0.00)');
-      ctx.fillStyle = gradient;
-      ctx.fill();
-    }
-
-    // Current point pulse
-    if (points.length > 0) {
-      const lastPoint = points[points.length - 1];
-      ctx.beginPath();
-      ctx.arc(lastPoint.x, lastPoint.y, 4, 0, Math.PI * 2);
-      ctx.fillStyle = '#10b981'; // Green dot
-      ctx.fill();
-    }
-
-    // Update stats text
-    if (lossStats) {
-      const padEpoch = String(epoch).padStart(3, '0');
-      const padLoss = lossVal.toFixed(4);
-      lossStats.textContent = `epoch: ${padEpoch}/${maxEpochs} | J(θ) loss: ${padLoss}`;
-    }
-
-    setTimeout(() => {
-      animationFrameId = requestAnimationFrame(animate);
-    }, 40);
-  }
-
-  animate();
-}
 
 /* ==========================================
    3. Search & Filter Functionality
