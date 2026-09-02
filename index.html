@@ -1,515 +1,845 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sai Dheeraj Gummadi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Dheeraj Gummadi | AI/ML Engineer & Researcher</title>
+    <!-- Modern Google Fonts: JetBrains Mono / Fira Code & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
   <body>
-    <!-- idea: have a javascript animated loss function converging in the header? :p -->
-    <div id="dhead" class="container">
-      <div class="row">
-        <div id="dpic">
-          <img src="assets/gsaidheeraj2.jpeg" style="max-width: 150px;" class="ppic" />
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-brand">
+          <span class="prompt-symbol">&gt;_</span> gsaidheeraj<span class="blink">.ai</span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="#about" class="nav-link">&lt;about/&gt;</a>
+          <a href="#experience" class="nav-link">&lt;exp/&gt;</a>
+          <a href="#publications" class="nav-link">&lt;research/&gt;</a>
+          <a href="#books-talks" class="nav-link">&lt;books&talks/&gt;</a>
+          <a href="#projects" class="nav-link">&lt;projects/&gt;</a>
+          <a href="#certifications" class="nav-link">&lt;certs/&gt;</a>
+          <a href="blog/home.html" class="nav-link highlight">&lt;blog/&gt;</a>
         </div>
-        <div id="ddesc">
-          <h1>Sai Dheeraj Gummadi</h1>
-          <h2>Machine Learning Engineer - 3 @ FactSet</h2> <!--<a href="https://www.overleaf.com/read/txktdgjsfbvf#a67b56">(Resume)</a>-->
-          <div id="dico">
-            <a href="https://www.linkedin.com/in/gummadi-saidheeraj/"><img src="assets/linkedin.svg" class="iico" /></a>
-            <a href="https://github.com/GSaiDheeraj"><img src="assets/github.png" class="iico"/></a>
-            <a href="mailto:dheerajsaigummadi@gmail.com"><img src="assets/gmail.webp" class="iico" /></a>
-<!--             <a href="https://studentprojectshub.blogspot.com/"><img src="assets/cblogger.png" class="iico" /></a>-->
-	        <a href="blog/home.html"><img src="assets/blog.png" class="iico" /></a> 
-            <a href="https://medium.com/@gsaidheeraj"><img src="assets/medium.png" class="iico" /></a>
-            <a href="https://topmate.io/gummadisaidheeraj"><img src="assets/topmate.png" class="iico" /></a>
-           <!-- <img src="assets/cemail.svg" style="cursor: pointer;" class="iico" id="iemail" title="click to reveal" /> -->
+        <div class="nav-actions">
+          <button class="cmd-trigger" id="cmdTrigger" title="Open Interactive Terminal (Ctrl+K or ~)">
+            <span class="cmd-kbd">⌘K</span>
+          </button>
+          <button class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+            <span class="theme-icon">🌙</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Interactive Terminal Drawer / Modal -->
+    <div class="term-modal" id="termModal">
+      <div class="term-window">
+        <div class="term-header">
+          <div class="term-buttons">
+            <span class="term-btn btn-close" onclick="closeTerminal()"></span>
+            <span class="term-btn btn-min"></span>
+            <span class="term-btn btn-max"></span>
           </div>
-          <div id="demail"></div> <!-- will reveal email -->
+          <div class="term-title">bash — gsaidheeraj@system:~</div>
+        </div>
+        <div class="term-body" id="termBody">
+          <div class="term-line">Welcome to Sai Dheeraj's interactive terminal v2.5.0!</div>
+          <div class="term-line">Type <span class="term-cmd-highlight">'help'</span> to view available commands.</div>
+          <br>
+        </div>
+        <div class="term-input-line">
+          <span class="term-prompt">guest@dheeraj-ai:~$</span>
+          <input type="text" id="termInput" autofocus placeholder="type command here..." autocomplete="off">
         </div>
       </div>
     </div>
 
-    <hr>
+    <!-- Main Container -->
+    <main class="main-wrapper">
 
-    <div id="history" class="container">
+      <!-- HERO / ABOUT SECTION -->
+      <section id="about" class="hero-section">
+        <div class="hero-grid">
+          <div class="hero-avatar-col">
+            <div class="avatar-frame">
+              <img src="assets/gsaidheeraj2.jpeg" alt="Sai Dheeraj Gummadi" class="hero-avatar" />
+              <div class="status-indicator" title="Currently active">
+                <span class="status-dot"></span> Online
+              </div>
+            </div>
+          </div>
 
-	    <div class="entry row">
-        <div class="timespan">
-          Jan 2026 - 
+          <div class="hero-content-col">
+            <div class="cli-badge">
+              <span class="badge-prefix">STATUS:</span>
+              <span class="badge-text">Software Engineer-3 (AI/ML) @ FactSet</span>
+            </div>
+
+            <h1 class="hero-name">Sai Dheeraj Gummadi</h1>
+            <h2 class="hero-subtitle">Specialized in Applied AI, LLM Systems, Document Parsing & Financial Data Automations</h2>
+
+            <p class="hero-bio">
+              Architecting intelligent ML pipelines, RAG systems, and quantitative models. Master's in Economics (Andhra University) & Master's in Data Science (IU Germany). 8 Research Publications in IEEE/Springer & 1 Granted US Patent.
+            </p>
+
+            <div class="social-pills">
+              <a href="https://www.linkedin.com/in/gummadi-saidheeraj/" target="_blank" class="social-pill">
+                <img src="assets/linkedin.svg" alt="LinkedIn" /> LinkedIn
+              </a>
+              <a href="https://github.com/GSaiDheeraj" target="_blank" class="social-pill">
+                <img src="assets/github.png" alt="GitHub" /> GitHub
+              </a>
+              <a href="mailto:dheerajsaigummadi@gmail.com" class="social-pill">
+                <img src="assets/gmail.webp" alt="Gmail" /> Email
+              </a>
+              <a href="blog/home.html" class="social-pill highlight">
+                <img src="assets/blog.png" alt="Blog" /> Tech Blog
+              </a>
+              <a href="https://medium.com/@gsaidheeraj" target="_blank" class="social-pill">
+                <img src="assets/medium.png" alt="Medium" /> Medium
+              </a>
+              <a href="https://topmate.io/gummadisaidheeraj" target="_blank" class="social-pill">
+                <img src="assets/topmate.png" alt="Topmate" /> Topmate
+              </a>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="stats-counter-strip">
+              <div class="stat-item">
+                <span class="stat-number">4+</span>
+                <span class="stat-label">Years Experience</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">8</span>
+                <span class="stat-label">Research Papers</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">1</span>
+                <span class="stat-label">US Patent</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">2</span>
+                <span class="stat-label">Books Published</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="ico">
-          <div class="entry-dot"></div>
-          <img src="assets/factset.png" style="max-width: 62px;" />
+      </section>
+
+      <!-- EXPERIENCE & EDUCATION SECTION -->
+      <section id="experience" class="section-block">
+        <div class="section-header">
+          <h2 class="section-title"><span class="title-decor">&gt;</span> career_trajectory.log</h2>
+          <span class="section-tag">Work Experience & Academic Degrees</span>
         </div>
-        <div class="desc">
-          <ul>
-            <li>As Software Engineer-3 (AI/ML Engineer), Working with Fundamental Financial Data including financial statement data.</li>
-            <li>Integrating AI Automations to the financial data extraction systems, Building a context store for validating the AI predictions in real-time.</li>
-          </ul>
+
+        <div class="terminal-timeline">
+
+          <!-- Entry: FactSet -->
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="time-badge">Jan 2026 - Present</span>
+              <img src="assets/factset.png" alt="FactSet" class="company-logo" />
+            </div>
+            <div class="timeline-body">
+              <h3 class="role-title">Software Engineer-3 (AI/ML Engineer)</h3>
+              <div class="company-sub">FactSet</div>
+              <ul class="achievement-list">
+                <li>Working with Fundamental Financial Data including complex balance sheet and financial statement extractions.</li>
+                <li>Integrating AI Automations into high-throughput financial data extraction systems and building a real-time context store to validate AI model predictions.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tag">AI/ML</span><span class="tag">Financial Data</span><span class="tag">Context Store</span><span class="tag">LLM Validation</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entry: AU Master's -->
+          <div class="timeline-card edu-card">
+            <div class="timeline-meta">
+              <span class="time-badge">2026</span>
+              <img src="assets/au.png" alt="Andhra University" class="company-logo" />
+            </div>
+            <div class="timeline-body">
+              <h3 class="role-title">Master's in Economics</h3>
+              <div class="company-sub">Andhra University</div>
+              <p class="edu-desc">Deep focus on econometric modeling, quantitative analysis, macroeconomic indicators, and financial market dynamics.</p>
+              <div class="tech-tags">
+                <span class="tag">Economics</span><span class="tag">Econometrics</span><span class="tag">Quantitative Modeling</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entry: Motorola Solutions -->
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="time-badge">Jul 2024 - Jan 2026</span>
+              <img src="assets/motorolapng.png" alt="Motorola" class="company-logo" />
+            </div>
+            <div class="timeline-body">
+              <h3 class="role-title">Software Engineer-I (AI/ML Engineer)</h3>
+              <div class="company-sub">Motorola Solutions</div>
+              <ul class="achievement-list">
+                <li>Engineered Data Governance Framework with FinOps team: constructed cost forecasting and anomaly detection models across multi-cloud infrastructure for spend and earnings insights.</li>
+                <li>Built automated weekly mass email pipeline serving project owners with financial dashboards comparing spend trends, saving analysis, and proactive budget alerts.</li>
+                <li>Designed RAG-based Chatbot for Public Safety using ChatGPT-4o-mini and AlloyDB Vector DB; deployed as a resilient RESTful API on Kubernetes with <strong>&lt;3s average latency</strong>.</li>
+                <li>Developed IRD Document Parser leveraging Gemini-1.5-Flash with self-consistency prompting, deployed on K8s; cut document processing time from 2 weeks to 2 days with <strong>70%+ automation rate</strong>.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tag">RAG</span><span class="tag">Gemini 1.5</span><span class="tag">GPT-4o-mini</span><span class="tag">AlloyDB</span><span class="tag">Kubernetes</span><span class="tag">FinOps</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entry: IU Berlin Master's -->
+          <div class="timeline-card edu-card">
+            <div class="timeline-meta">
+              <span class="time-badge">2024 - 2025</span>
+              <img src="assets/iu.jpg" alt="IU Germany" class="company-logo" />
+            </div>
+            <div class="timeline-body">
+              <h3 class="role-title">Master's in Data Science</h3>
+              <div class="company-sub">International University of Applied Sciences, Berlin, Germany</div>
+              <p class="edu-desc">
+                Thesis: <em>"AI Stock Analyst: Financial Chatbot Using Large Language Models"</em> advised by <a href="https://www.linkedin.com/in/dr-tobias-broweleit-3ab155b/" target="_blank">Dr. Tobias Broweleit</a>. Researched investment banking workflows, RAG system design, benchmarking Gemini 1.5 Flash vs. GPT-4o with Trustworthiness Score evaluation metrics.
+                [<a href="https://drive.google.com/file/d/16digIVkPkKV7-9XbyAFeJJNKNEVu_ujw/view?usp=sharing" target="_blank">View Thesis Certificate</a>]
+              </p>
+              <div class="tech-tags">
+                <span class="tag">Data Science</span><span class="tag">LLM Benchmarking</span><span class="tag">Trustworthiness Score</span><span class="tag">RAG Architecture</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entry: Brane Enterprises -->
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="time-badge">Nov 2023 - Jul 2024</span>
+              <img src="assets/brane.webp" alt="Brane Enterprises" class="company-logo" />
+            </div>
+            <div class="timeline-body">
+              <h3 class="role-title">Deep Learning Engineer</h3>
+              <div class="company-sub">Brane Enterprises</div>
+              <ul class="achievement-list">
+                <li>Designed natural language NLP pipeline for Low-Code/No-Code platform translating natural language specifications into complete system architectures.</li>
+                <li>Synthesized workflow datasets across ChatGPT, LLaMA-2, and Mistral; trained T5/BART/GPT models for coreference resolution, sentence splitting, and span extraction.</li>
+                <li>Applied knowledge distillation for lightweight LLMs and deployed models via Docker and Ray Serve.</li>
+                <li>Fine-tuned GPT-2 (1.5B parameters) with LoRA & BitsAndBytes across multi-GPU Tesla V100s for real-time virtual developer assistant.</li>
+                <li>Optimized vLLM Inference Engine yielding ultra-low latency (0.06s) and high throughput (71 rps). Prototyped LlamaIndex RAG pipelines for hallucination reduction.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tag">vLLM</span><span class="tag">LoRA</span><span class="tag">Ray Serve</span><span class="tag">LLaMA-2</span><span class="tag">Mistral</span><span class="tag">LlamaIndex</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entry: HighRadius -->
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="time-badge">Aug 2021 - Oct 2023</span>
+              <img src="assets/hr.jpg" alt="HighRadius" class="company-logo" />
+            </div>
+            <div class="timeline-body">
+              <h3 class="role-title">Data Scientist</h3>
+              <div class="company-sub">HighRadius</div>
+              <ul class="achievement-list">
+                <li>Built end-to-end Financial DocumentScanner combining CNN, YOLO, and OCR to extract financial statement tables (100–200 pages) for credit risk assessment, achieving 80% automation rate and 40% manual time reduction.</li>
+                <li>Trained 6-layer CNN model using Explainable AI (LIME & GradCAM) for interpretability.</li>
+                <li>Enhanced Generic Parser latency using quantized LayoutLM token classification transformer models, reaching 90% accuracy and 75% automation.</li>
+                <li>Developed page-type classification (Sales Invoice, Remittance, Check, Claim) by fine-tuning LayoutLM Sequence Classifier on content and visual layout.</li>
+                <li>Constructed XGBoost & Random Forest payment date prediction models for Fortune 500 CPG clients, achieving 85% accuracy within +/-3 days.</li>
+              </ul>
+              <div class="tech-tags">
+                <span class="tag">LayoutLM</span><span class="tag">YOLO</span><span class="tag">GradCAM</span><span class="tag">OCR</span><span class="tag">XGBoost</span><span class="tag">Fintech</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entry: SRM University -->
+          <div class="timeline-card edu-card">
+            <div class="timeline-meta">
+              <span class="time-badge">2018 - 2022</span>
+              <img src="assets/srm.png" alt="SRM University" class="company-logo" />
+            </div>
+            <div class="timeline-body">
+              <h3 class="role-title">B.Tech in Electronics & Communication Engineering</h3>
+              <div class="company-sub">SRM University, AP</div>
+              <p class="edu-desc">
+                Published 8 research papers on deep learning and medical computer vision in IEEE, Springer, and Scopus databases. Patented a machine learning pipeline under Professor <a href="https://in.linkedin.com/in/dr-anirban-ghosh" target="_blank">Anirban Ghosh</a>.
+              </p>
+              <div class="tech-tags">
+                <span class="tag">Deep Learning</span><span class="tag">Computer Vision</span><span class="tag">Medical AI</span><span class="tag">IEEE Publications</span>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </div>
+      </section>
 
-      <div class="entry row">
-        <div class="timespan">
-          2026 - 
+      <!-- PUBLICATIONS & PATENTS SECTION -->
+      <section id="publications" class="section-block">
+        <div class="section-header">
+          <h2 class="section-title"><span class="title-decor">&gt;</span> research_papers_&amp;_patents.bib</h2>
+          <span class="section-tag">8 Papers &bull; 1 Granted US Patent &bull; <a href="https://scholar.google.com/citations?user=ERJe5ugAAAAJ&hl=en" target="_blank">Google Scholar</a></span>
         </div>
-        <div class="ico">
-          <div class="entry-dot"></div>
-          <img src="assets/au.png" style="max-width: 62px;" />
+
+        <!-- Filter / Search box -->
+        <div class="filter-bar">
+          <input type="text" id="paperSearch" class="search-input" placeholder="⚡ Search publications by title, venue, or keyword..." />
+          <div class="filter-pills" id="paperFilterPills">
+            <button class="filter-pill active" data-filter="all">All</button>
+            <button class="filter-pill" data-filter="llm">LLMs / RAG</button>
+            <button class="filter-pill" data-filter="vision">Vision / Medical</button>
+            <button class="filter-pill" data-filter="deepfake">Deepfakes</button>
+            <button class="filter-pill" data-filter="patent">Patents</button>
+          </div>
         </div>
-        <div class="desc">
-          <ul>
-            <li>Master's in Economics from Andhra University</li>
-          </ul>
-        </div>
-      </div>
 
-
-	    <div class="entry row">
-        <div class="timespan">
-          Jul 2024 - Jan 2026
-        </div>
-        <div class="ico">
-          <div class="entry-dot"></div>
-          <img src="assets/motorolapng.png" style="max-width: 62px;" />
-        </div>
-        <div class="desc">
-          <ul>
-            <li>As Software Engineer-I (AI/ML Engineer), Working with FinOps teams to design and developing Data Governance Framework including Cost forecasting model and Anomaly detection models for cost and revenue analysis across projects and clouds. Delivered insights into project profitability by comparing expenditures versus earnings, enabling data-driven decision-making and improved financial transparency.</li>
-            <li>Developed and implemented an automated mass email notification system that delivered weekly project cost dashboards to project owners, enabling proactive cost management by comparing current expenses against previous week and month, and highlighting realized and potential savings.</li>
-            <li>Designed and Developed an RAG based Chatbot for Public Safety Department using ChatGPT-4o-mini and AlloyDB vector database and Deployed as a RESTful API service in a Kubernetes cluster, with average response latency of 3 sec per question.</li>
-            <li>Developed an IRD Document Parser using Gemini-1.5-Flash model combined with approaches like self-consistency prompting and Deployed the parser as a RESTful API service in a Kubernetes cluster, ensuring scalability, resilience, and efficiency of the solution. This drastically reduced document extraction time from two weeks to 2 days, achieving an automation rate of over 70+%.</li>
-          </ul>
-        </div>
-      </div>
-	    
-      <div class="entry row">
-        <div class="timespan">
-          2024 - 2025
-        </div>
-        <div class="ico">
-          <div class="entry-dot"></div>
-          <img src="assets/iu.jpg" style="max-width: 68px;"/>
-        </div>
-        <div class="desc">
-          <ul>
-            <li><b><a href= "https://drive.google.com/file/d/16digIVkPkKV7-9XbyAFeJJNKNEVu_ujw/view?usp=sharing">Master's in Data Science</a></b> from  <b>International University of Applied Sciences, Berlin, Germany</b>. I completed my full-time masters in distance learning format. Worked on "AI Stock Analyst: Financial Chatbot Using Large Language Models" for my Thesis under <a href= "https://www.linkedin.com/in/dr-tobias-broweleit-3ab155b/">Dr.Tobias Broweleit</a>, which talks about investment banking business, LLM's, RAG and System Design of ChatBot. Gemini 1.5 Flash and GPT-4o models were compared for stock analysis using Trustworthiness Score as evaluation metric. </li>
-          </ul>
-          
-        </div>
-      </div>
-      
-      <div class="entry row">
-        <div class="timespan">
-          Nov 2023 - Jul 2024
-        </div>
-        <div class="ico">
-          <div class="entry-dot"></div>
-          <img src="assets/brane.webp" style="max-width: 62px;" />
-        </div>
-        <div class="desc">
-          <ul>
-            <li>As a Deep Learning Engineer at Brane, I Designed and Developed the pipeline for freeflow text based No Code Low Code Platform using Natural Language Processing techniques and LLMs which can build the complete solution from the given set of sentences in natural language.</li>
-            <li>Synthesised data of workflows in different domains using ChatGPT, LLama2, and Mistral for training T5/BART/GPT models for coreference resolution, paraphrasing, splitting complex sentences, span extraction.</li>
-            <li>Implemented knowledge distillation to create distilled versions of LLMs and deployed the models as RESTful APIs using Docker and Ray Serve.</li>
-            <li>Fine-Tuned GPT2 (1.5 billion parameter) for next task prediction using LORA and Bitsandbytes on multiple GPUs (Tesla V100) using model and data parallelization. A virtual assistant tailored for solution developers, aimed at enhancing their productivity.</li>
-            <li>Deployed the model with vLLM Inference Engine and achieved low-latency (0.06 sec) and high-throughput (71 rps) inferences by optimizing real-time interactions.</li>
-            <li>Prototyping RAG based approach for next task prediction using LlamaIndex for getting less hallucinated responses from LLMs.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="entry row">
-        <div class="timespan">
-          Aug 2021 - Oct 2023
-        </div>
-        <div class="ico">
-          <div class="entry-dot"></div>
-          <img src="assets/hr.jpg" style="max-width: 62px;" />
-        </div>
-        <div class="desc">
-          <ul>
-            <li>As Data Scientist at HighRadius, Designed and Developed an end-to-end pipeline for a Financial DocumentScanner product using CNN, YOLO, and OCR for extracting the required tabular regions like balance sheets, and income statements from Financial Statements and analyzing the customer’s credit risk.</li>
-            <li>Trained and Improved the 6-layered unconventional CNN using Explainable AI tools like Lime and GradCam</li>
-            <li>Achieved an overall automation rate of 80% and Reduced 40% of the time spent on manual analysis of financial documents with 100–200 pages.</li>
-            <li>Improved the latency of the Generic Parser product which is one point solution for parsing Claims/Invoices/Remittences/ POD’s using NLP transformer-based quantized LayoutLM token classification model and unsupervised algorithms with an overall accuracy of 90% and achieved automation rate of 75%.</li>
-            <li>Worked on POC for classifying the pages in input documents into Sales Invoice, Remittance, Check, and Claim for improving the accuracy of downstream parsing modules by Fine Tuning the LayoutLM Sequence Classification model for classifying the images based on both content and layout.</li>
-            <li>Developed Payment date prediction models using regression models like Random Forest / XGBoost for FORTUNE 500 CPG companies to predict invoice payment date with an average +/-3 Day accuracy of 85%.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="entry row">
-        <div class="timespan">
-          2018 - 2022
-        </div>
-        <div class="ico">
-          <div class="entry-dot"></div>
-          <img src="assets/srm.png" style="max-width: 62px;"/>
-        </div>
-        <div class="desc">
-          <ul>
-            <li><b>B.Tech from SRM University, AP</b> with a major in <b>Electronics and Communication Engineering</b>. I <b>Published 8 research papers</b> on deep learning in IEEE, Springer, Scopus databases and Patented a pipeline for disease diagnosis under Professor <a href= "https://in.linkedin.com/in/dr-anirban-ghosh">Anirban Ghosh</a>.</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-
-    <hr>
-    <div style="margin-top: 1px;">
-    <div class="container">
-      <div class="ctitle">publications</div>
-
-	    
-      <div class="pub">
-        <div class="pub-title"><a href="https://doi.org/10.36227/techrxiv.174353577.78532926/v1">Investment Risk Analysis and Mitigation Strategies Using Large Language Models</a></div>
-        <div class="pub-venue">TechRixv, 2025</div>
-        <div class="pub-authors"><u>G.S.Dheeraj</u>.</div>
-      </div>
-	    
-      <div class="pub">
-        <div class="pub-title"><a href="https://doi.org/10.36227/techrxiv.174195749.90696308/v2">Enhancing Credit Decisions with AI: A Pipeline for Automated Financial Document Analysis and Creditworthiness Prediction</a></div>
-        <div class="pub-venue">TechRixv, 2025</div>
-        <div class="pub-authors"><u>G.S.Dheeraj</u>.</div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title"><a href="https://link.springer.com/chapter/10.1007/978-981-99-6984-5_21">Impact of Deepfakes and Gradient Centralization on COVID-19 Diagnosis: A Compact Swin Transformer based Approach</a></div>
-        <div class="pub-venue">International Conference on Intelligent Systems and Applications, 2023</div>
-        <div class="pub-authors"><u>G.S.Dheeraj</u>, Anirban Ghosh.</div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title"><a href="https://link.springer.com/chapter/10.1007/978-981-99-2602-2_25">Ocular Disease Classification: A Vision Transformer based Approach</a></div>
-        <div class="pub-venue">International Conference on Innovations in Computational Intelligence and Computer Vision, 2023</div>
-        <div class="pub-authors"><u>G.S.Dheeraj</u>, Anirban Ghosh</div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/9848964">Deep Residual Learning based Discriminator for Identifying Deepfakes with Cut-Out Regularization</a></div>
-        <div class="pub-venue">World Conference on Applied Intelligence and Computing, 2022</div>
-        <div class="pub-authors"><u>G.S.Dheeraj</u>, Anirban Ghosh.</div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/9800796">Transfer Learning based Classification of Plasmodium Falciparum Parasitic Blood Smear Images.</a></div>
-        <div class="pub-venue">International Symposium on Digital Forensics and Security, 2022</div>
-        <div class="pub-authors"><u>G.S.Dheeraj</u>, Anirban Ghosh, V.Yeswanth</i></div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/9574689">Transfer Learning based Detection of Pneumonia from Chest X-Ray Images</a></div>
-        <div class="pub-venue">International Conference on Computational Intelligence and Communication Networks, 2021</div>
-        <div class="pub-authors"><u>G.S.Dheeraj</u>, V.Yeswanth, Anirban Ghosh, P.N.Kartheek, K.A.Krishna.</div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/9579538">A Transfer Learning Based Approach for Detecting COVID-19 with Radiography Images</a></div>
-        <div class="pub-venue">International Conference on Computing, Communication, and Networking Technologies, 2021</div>
-        <div class="pub-authors"> <u>G.S.Dheeraj</u>, Anirban Ghosh</i></div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title"><a href="https://drive.google.com/file/d/1uerl2J1To_qxenvWv9IcoetUgEpQNVYn/view?usp=sharing">Image Enhancement based on Verilog Hardware Description Language Images</a></div>
-        <div class="pub-venue">Ripublications, International Journal of Engineering Research and Technology (Journal)</div>
-        <div class="pub-authors">Ch.S.Nived, A.R.Kumar, <u>G.S.Dheeraj</u>, P.Jithendra</div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title"><a href="https://www.irjet.net/archives/V7/i10/IRJET-V7I10253.pdf">Computer Vision Based Sudoku Solving with Augmented Reality</a></div>
-        <div class="pub-venue">IRJET (Journal), 2020</div>
-        <div class="pub-authors"><u>G.S.Dheeraj</u>, K.B.V.Lakshmi, K.A.Krishna</div>
-      </div>
-
-      <div>
-        <br>
-        Also on <a href="https://scholar.google.com/citations?user=ERJe5ugAAAAJ&hl=en">Google Scholar</a>
-      </div>
-    </div>
-  </div>
-
-    <hr>
-    <div class="container" style="margin-top: 1px;">
-      <div class="ctitle">patents</div>
-      <div>
-        <ul>
-          <li>V. Lohith, <u>S. D. Gummadi</u>, S. Niladri, S. Nilotpal, G. Ansumun, A. Pratyush. 2023 <a href="https://drive.google.com/file/d/10e7uLbLwTAkjdh9p_YrWbDJF--00yRcH/view?usp=sharing">"Machine Learning based Systems and Methods for Data Extraction from Financial Statements"</a>. US Patent Office 18/396,772. Published (2025). Granted (2026)</li>
-        </ul>
-      </div>
-    </div>
-
-    <hr>
-   <div id="pet-projects" class="container">
-      <div class="ctitle">books</div>
-	   <div class="project">
-        <div class="pico"><img src="assets/book1.png" /></div>
-        <div class="pdesc"><a href="https://www.amazon.com/dp/B0FF6CT6SW" target="_blank">Cracking Data Science Case Study Interview: Data, Features, Models and System Design</a></div>
-        <div class="pend"></div>
-      </div>
-      <div class="project">
-        <div class="pico"><img src="assets/book2.jpeg" /></div>
-        <div class="pdesc"><a href="https://www.amazon.com/dp/B0GMRLLDTL" target="_blank">The Complete Hands-On Language Models Playbook : Understanding, Building and Scaling Language Models</a></div>
-        <div class="pend"></div>
-      </div>
-    </div>
-
-    <hr>
-
-    <div style="padding-top: 1px; margin-top: 1px; padding-bottom: 1px;">
-    <div class="container">
-      <div class="ctitle">featured talks</div>
-      <ul>
-        <li>Deep Learning for Disease Diagnosis at Universidad Nacional Federico Villarreal, Lima, Peru, South America. <a href="https://drive.google.com/file/d/1fiVzQb9UBuEHmue10Tw0qlqs3fa_Gnww/view">Link</a></li>
-        <li>CNN for Disease Diagnosis using Radiography images at IIT Kharagpur, India. <a href="https://drive.google.com/file/d/1bZ4Kh8zZNqkG2NLCW6DLI71VNkjucslC/view">Link</a></li>
-        <li>Residual Learning for Detecting Deepfakes at Soft Computing Research Society. <a href="https://drive.google.com/file/d/1p7C5xf32HtBnSlNS5IabbrdPuAaqFC7Q/view">Link</a></li>
-        <li>Compact Vision Transformer for medical images at Manipal University, Jaipur. <a href="https://drive.google.com/drive/u/1/folders/17hltHSJDvTmeLaSZgpmJtSEgENAxW5wl">Link</a></li>
-	<li>Deepfakes and Gradient Centralization for Improving Disease Diagnosis at Institute of Artificial Intelligence, Pune. <a href="https://drive.google.com/file/d/1ouDR9yJF8eg-N8CpLHuZVfEFRjWkJuEo/view?usp=sharing">Link</a></li>
-      </ul>
-    </div>
-    </div>
-
-    <hr>
-<!-- <div style="background-color: #eee; padding-top: 1px; margin-top: 10px;"> -->
-<div id="pet-projects" class="container">
-      <div class="ctitle">pet projects</div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/attendence.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/Computer-Vision-based-Attendence-System" target="_blank">Computer Vision based Attendence System</a>, <a href="https://studentprojectshub.blogspot.com/2021/01/computer-vision-based-attendance.html" target="_blank">Link</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/auto.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/Autonomous-car-Vision/tree/main/Autonomous%20Car%20Vision" target="_blank">Autonomous Car Vision</a>, <a href="https://studentprojectshub.blogspot.com/2021/01/computer-vision-based-attendance.html" target="_blank">Link</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/Chatbot.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/Simple-Chat-Bot-with-Python" target="_blank">General Chatbot</a>, <a href="https://studentprojectshub.blogspot.com/2020/12/chat-bot-master-with-artificial-neural.html" target="_blank">Link</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/covid24.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/Corona-Detection" target="_blank">Covid Detection using Medical Images</a>, <a href="https://ieeexplore.ieee.org/document/9579538" target="_blank">Link</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/covid.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/COVID-19-Detection-and-ForeCasting" target="_blank">Covid Forecasting usign Regression</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/credit.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/Credit-Card-fraudulent-detection">Credit Card Fraud Detection</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/face.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/Face-Recognition-with-OpenCV-HaarCascades">Face Recognition with OpenCV HaarCascades</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/food.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/Food-Demand-Forecasting-Analytics-Vidhya">Food Demand Forecasting Analytics Vidhya</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/google.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/All-Data-Science-Projects/tree/main/Google%20analytics%20Revenue%20Prediction" target="_blank">Google Analytics Revenue Prediction</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/hand.png" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/Hand-Written-Number-Recognition"> Hand Written Number Recognition</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/human.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/Human-Activity-Recognition" target="_blank">Human Activity Recognition</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/invoice.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/Invoice-Management-System" target="_blank">Invoice Management System</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/lane.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/Path-Detection-using-Lane-Lines-with-OpenCV" target="_blank">Path Detection using Lane Lines with OpenCV</a>, <a href="https://studentprojectshub.blogspot.com/2020/12/path-detection-based-on-bird-eye-view.html" target="_blank">Link</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/malaria.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/End-to-End-Malaria-Detection" target="_blank">End to End Malaria Detection</a>, <a href="https://drive.google.com/file/d/1shcJiaBxEqg6wHh7g3uUXkJLNL6rh_-M/view?usp=sharing" target="_blank">Link</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/ml.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/End-to-End-Multiple-Disease-Detection" target="_blank">End to End Multiple Disease Detection</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/object.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/Object-Detection-with-SSD-OpenCV" target="_blank">Object Detection with SSD OpenCV</a>, <a href="https://studentprojectshub.blogspot.com/2020/12/object-detection-using-opencv-and.html" target="_blank">Link</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/pneumonia.webp" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/End-to-End-Pneumonia-Detection" target="_blank">End to End Pneumonia Detection</a>, <a href="https://ieeexplore.ieee.org/document/9574689/" target="_blank">Link</a></div>
-        <div class="pend"></div>
-      </div>
-
-      <div class="project">
-        <div class="pico"><img src="assets/sudoku.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/SudukoSolver" target="_blank">Augmented Reality based Suduko Solver</a>,  <a href="https://www.irjet.net/archives/V7/i10/IRJET-V7I10253.pdf" target="_blank">Link</a></div>
-        <div class="pend"></div>
-      </div>
-
-<div class="project">
-        <div class="pico"><img src="assets/traffic.jpg" /></div>
-        <div class="pdesc"><a href="https://github.com/GSaiDheeraj/Traffic-Signs-Recognition" target="_blank">Realtime Traffic Signs Recognition</a>, <a href="https://studentprojectshub.blogspot.com/2020/12/traffic-signs-recognition-with.html" target="_blank">Link</a></div>
-        <div class="pend"></div>
-      </div>
-    </div>
-    <hr>
-    <div style="margin-top: 1px;">
-      <div id="featured-talks" class="container">
-        <div class="ctitle">certifications</div>
-        <div class="row">
-          <div class="card">
-            <a href="https://drive.google.com/file/d/1fL2lYS6BZXZyntqOksFDkE6j4bu6Eh1V/view">
-              <div class="ccimg"><img src="assets/stanford.jpg" /></div>
+        <!-- Patents Highlight Box -->
+        <div class="patent-box paper-item" data-category="patent">
+          <div class="patent-header">
+            <span class="badge patent-badge">GRANTED US PATENT</span>
+            <span class="patent-num">US Patent Office 18/396,772</span>
+          </div>
+          <h3 class="patent-title">
+            <a href="https://drive.google.com/file/d/10e7uLbLwTAkjdh9p_YrWbDJF--00yRcH/view?usp=sharing" target="_blank">
+              "Machine Learning based Systems and Methods for Data Extraction from Financial Statements"
             </a>
-            <div class="cdesc">Machine Learning from Stanford University</div>
-          </div>
-          <div class="card">
-            <a href="https://drive.google.com/file/d/1c73wlB5pUkvYcQznxmjzsiHXgaeA8iIY/view">
-              <div class="ccimg"><img src="assets/BI.jpg" /></div>
-            </a>
-            <div class="cdesc">Data Science Learning Path</div>
-          </div>
-          <div class="card">
-            <a href="https://drive.google.com/file/d/1QzIrBcL7iwQzJZx8VUCkRvxHGKsD5TBp/view">
-              <div class="ccimg"><img src="assets/ibm.jpg" /></div>
-            </a>
-            <div class="cdesc">IBM AI Engineering Specialization</div>
-          </div>
-          <div class="card">
-            <a href="https://drive.google.com/file/d/1-b42Hkc34bF1mO2qCETeC6Az1ympf7vk/view">
-              <div class="ccimg"><img src="assets/dai.jpg" /></div>
-            </a>
-            <div class="cdesc">AI for Medicine</div>
-          </div>
-	  <div class="card">
-            <a href="https://drive.google.com/file/d/1GY2kQmp5IkGcjKfu79SrW8Ztql4e6Ji-/view?usp=sharing">
-              <div class="ccimg"><img src="assets/dai.jpg" /></div>
-            </a>
-            <div class="cdesc">Tensorflow Developer Specialization</div>
-          </div>
-	 <div class="card">
-            <a href="https://drive.google.com/file/d/1ET0NsmPqqJnd3Hbs8NsQhQSE1x7PXlFv/view?usp=sharing">
-              <div class="ccimg"><img src="assets/dai.jpg" /></div>
-            </a>
-            <div class="cdesc">Microsoft Azure AI Fundamentals AI-900 prep</div>
-          </div>
-          <div class="card">
-            <a href="https://drive.google.com/file/d/1ai9yA9uSsWvRBO5mISjAfIWP72hlsIXX/view">
-              <div class="ccimg"><img src="assets/HR.png" /></div>
-            </a>
-            <div class="cdesc">Hacker Rank Problem Solving Test</div>
-          </div>
-	    <div class="card">
-            <a href="https://drive.google.com/file/d/1PJCj8v7Yvf6fXIJFlsQ8Nc9ittmC0CB7/view">
-              <div class="ccimg"><img src="assets/HR.png" /></div>
-            </a>
-            <div class="cdesc">Hacker Rank Python Test</div>
-          </div>
-          <div class="card">
-            <a href="https://drive.google.com/file/d/1RAeUzET_hdoKEd2zkEDjEx9V_AutSerG/view">
-              <div class="ccimg"><img src="assets/HR.png" /></div>
-            </a>
-            <div class="cdesc">Hacker Rank SQL Test</div>
-          </div>
-	    <div class="card">
-            <a href="https://drive.google.com/file/d/17q3poIUjgbaBqFHyUN9UaqKqkJDFvvdA/view">
-              <div class="ccimg"><img src="assets/HR.png" /></div>
-            </a>
-            <div class="cdesc">Hacker Rank SQL (Intermediate) Test</div>
-          </div>
+          </h3>
+          <p class="paper-authors">V. Lohith, <u>S. D. Gummadi</u>, S. Niladri, S. Nilotpal, G. Ansumun, A. Pratyush (Published 2025, Granted 2026)</p>
         </div>
+
+        <!-- Papers List -->
+        <div class="papers-grid" id="papersGrid">
+
+          <div class="paper-card paper-item" data-category="llm">
+            <div class="paper-venue-tag">TechRxiv, 2025</div>
+            <h3 class="paper-title"><a href="https://doi.org/10.36227/techrxiv.174353577.78532926/v1" target="_blank">Investment Risk Analysis and Mitigation Strategies Using Large Language Models</a></h3>
+            <div class="paper-authors"><u>G.S. Dheeraj</u></div>
+          </div>
+
+          <div class="paper-card paper-item" data-category="llm">
+            <div class="paper-venue-tag">TechRxiv, 2025</div>
+            <h3 class="paper-title"><a href="https://doi.org/10.36227/techrxiv.174195749.90696308/v2" target="_blank">Enhancing Credit Decisions with AI: A Pipeline for Automated Financial Document Analysis and Creditworthiness Prediction</a></h3>
+            <div class="paper-authors"><u>G.S. Dheeraj</u></div>
+          </div>
+
+          <div class="paper-card paper-item" data-category="vision">
+            <div class="paper-venue-tag">Intl. Conf. on Intelligent Systems and Applications, Springer 2023</div>
+            <h3 class="paper-title"><a href="https://link.springer.com/chapter/10.1007/978-981-99-6984-5_21" target="_blank">Impact of Deepfakes and Gradient Centralization on COVID-19 Diagnosis: A Compact Swin Transformer based Approach</a></h3>
+            <div class="paper-authors"><u>G.S. Dheeraj</u>, Anirban Ghosh</div>
+          </div>
+
+          <div class="paper-card paper-item" data-category="vision">
+            <div class="paper-venue-tag">Intl. Conf. on Innovations in Computational Intelligence, Springer 2023</div>
+            <h3 class="paper-title"><a href="https://link.springer.com/chapter/10.1007/978-981-99-2602-2_25" target="_blank">Ocular Disease Classification: A Vision Transformer based Approach</a></h3>
+            <div class="paper-authors"><u>G.S. Dheeraj</u>, Anirban Ghosh</div>
+          </div>
+
+          <div class="paper-card paper-item" data-category="deepfake">
+            <div class="paper-venue-tag">World Conf. on Applied Intelligence &amp; Computing, IEEE 2022</div>
+            <h3 class="paper-title"><a href="https://ieeexplore.ieee.org/document/9848964" target="_blank">Deep Residual Learning based Discriminator for Identifying Deepfakes with Cut-Out Regularization</a></h3>
+            <div class="paper-authors"><u>G.S. Dheeraj</u>, Anirban Ghosh</div>
+          </div>
+
+          <div class="paper-card paper-item" data-category="vision">
+            <div class="paper-venue-tag">Intl. Symposium on Digital Forensics &amp; Security, IEEE 2022</div>
+            <h3 class="paper-title"><a href="https://ieeexplore.ieee.org/document/9800796" target="_blank">Transfer Learning based Classification of Plasmodium Falciparum Parasitic Blood Smear Images</a></h3>
+            <div class="paper-authors"><u>G.S. Dheeraj</u>, Anirban Ghosh, V. Yeswanth</div>
+          </div>
+
+          <div class="paper-card paper-item" data-category="vision">
+            <div class="paper-venue-tag">Intl. Conf. on Computational Intelligence &amp; Communication, IEEE 2021</div>
+            <h3 class="paper-title"><a href="https://ieeexplore.ieee.org/document/9574689" target="_blank">Transfer Learning based Detection of Pneumonia from Chest X-Ray Images</a></h3>
+            <div class="paper-authors"><u>G.S. Dheeraj</u>, V. Yeswanth, Anirban Ghosh, P.N. Kartheek, K.A. Krishna</div>
+          </div>
+
+          <div class="paper-card paper-item" data-category="vision">
+            <div class="paper-venue-tag">ICCCNT IEEE 2021</div>
+            <h3 class="paper-title"><a href="https://ieeexplore.ieee.org/document/9579538" target="_blank">A Transfer Learning Based Approach for Detecting COVID-19 with Radiography Images</a></h3>
+            <div class="paper-authors"><u>G.S. Dheeraj</u>, Anirban Ghosh</div>
+          </div>
+
+          <div class="paper-card paper-item" data-category="vision">
+            <div class="paper-venue-tag">IJERT Journal 2020</div>
+            <h3 class="paper-title"><a href="https://drive.google.com/file/d/1uerl2J1To_qxenvWv9IcoetUgEpQNVYn/view?usp=sharing" target="_blank">Image Enhancement based on Verilog Hardware Description Language Images</a></h3>
+            <div class="paper-authors">Ch.S. Nived, A.R. Kumar, <u>G.S. Dheeraj</u>, P. Jithendra</div>
+          </div>
+
+          <div class="paper-card paper-item" data-category="vision">
+            <div class="paper-venue-tag">IRJET Journal 2020</div>
+            <h3 class="paper-title"><a href="https://www.irjet.net/archives/V7/i10/IRJET-V7I10253.pdf" target="_blank">Computer Vision Based Sudoku Solving with Augmented Reality</a></h3>
+            <div class="paper-authors"><u>G.S. Dheeraj</u>, K.B.V. Lakshmi, K.A. Krishna</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- BOOKS & FEATURED TALKS -->
+      <section id="books-talks" class="section-block">
+        <div class="grid-2col">
+
+          <!-- Books Column -->
+          <div class="col-box">
+            <div class="section-header">
+              <h2 class="section-title"><span class="title-decor">&gt;</span> published_books.json</h2>
+              <span class="section-tag">Available on Amazon</span>
+            </div>
+            <div class="books-wrapper">
+
+              <div class="book-card">
+                <img src="assets/book1.png" alt="Cracking Data Science Case Study Interview" class="book-cover" />
+                <div class="book-info">
+                  <h3 class="book-title"><a href="https://www.amazon.com/dp/B0FF6CT6SW" target="_blank">Cracking Data Science Case Study Interview</a></h3>
+                  <div class="book-sub">Data, Features, Models and System Design</div>
+                  <a href="https://www.amazon.com/dp/B0FF6CT6SW" target="_blank" class="book-link-btn">View on Amazon &rarr;</a>
+                </div>
+              </div>
+
+              <div class="book-card">
+                <img src="assets/book2.jpeg" alt="The Complete Hands-On Language Models Playbook" class="book-cover" />
+                <div class="book-info">
+                  <h3 class="book-title"><a href="https://www.amazon.com/dp/B0GMRLLDTL" target="_blank">The Complete Hands-On Language Models Playbook</a></h3>
+                  <div class="book-sub">Understanding, Building and Scaling Language Models</div>
+                  <a href="https://www.amazon.com/dp/B0GMRLLDTL" target="_blank" class="book-link-btn">View on Amazon &rarr;</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Featured Talks Column -->
+          <div class="col-box">
+            <div class="section-header">
+              <h2 class="section-title"><span class="title-decor">&gt;</span> keynotes_&amp;_talks.sh</h2>
+              <span class="section-tag">Invited Guest Keynotes</span>
+            </div>
+            <div class="talks-list">
+              <div class="talk-item">
+                <div class="talk-bullet">&gt;</div>
+                <div class="talk-content">
+                  <strong>Deep Learning for Disease Diagnosis</strong> — Universidad Nacional Federico Villarreal, Lima, Peru, South America.
+                  [<a href="https://drive.google.com/file/d/1fiVzQb9UBuEHmue10Tw0qlqs3fa_Gnww/view" target="_blank">Slides / Certificate</a>]
+                </div>
+              </div>
+              <div class="talk-item">
+                <div class="talk-bullet">&gt;</div>
+                <div class="talk-content">
+                  <strong>CNN for Disease Diagnosis using Radiography Images</strong> — IIT Kharagpur, India.
+                  [<a href="https://drive.google.com/file/d/1bZ4Kh8zZNqkG2NLCW6DLI71VNqkJucslC/view" target="_blank">Slides / Certificate</a>]
+                </div>
+              </div>
+              <div class="talk-item">
+                <div class="talk-bullet">&gt;</div>
+                <div class="talk-content">
+                  <strong>Residual Learning for Detecting Deepfakes</strong> — Soft Computing Research Society.
+                  [<a href="https://drive.google.com/file/d/1p7C5xf32HtBnSlNS5IabbrdPuAaqFC7Q/view" target="_blank">Slides / Certificate</a>]
+                </div>
+              </div>
+              <div class="talk-item">
+                <div class="talk-bullet">&gt;</div>
+                <div class="talk-content">
+                  <strong>Compact Vision Transformer for Medical Images</strong> — Manipal University, Jaipur.
+                  [<a href="https://drive.google.com/drive/u/1/folders/17hltHSJDvTmeLaSZgpmJtSEgENAxW5wl" target="_blank">Folder</a>]
+                </div>
+              </div>
+              <div class="talk-item">
+                <div class="talk-bullet">&gt;</div>
+                <div class="talk-content">
+                  <strong>Deepfakes &amp; Gradient Centralization for Improving Disease Diagnosis</strong> — Institute of AI, Pune.
+                  [<a href="https://drive.google.com/file/d/1ouDR9yJF8eg-N8CpLHuZVfEFRjWkJuEo/view?usp=sharing" target="_blank">Certificate</a>]
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PET PROJECTS SECTION -->
+      <section id="projects" class="section-block">
+        <div class="section-header">
+          <h2 class="section-title"><span class="title-decor">&gt;</span> open_source_projects.git</h2>
+          <span class="section-tag">Interactive Repository Showcase</span>
+        </div>
+
+        <div class="projects-filter-bar">
+          <input type="text" id="projectSearch" class="search-input" placeholder="🔍 Search projects (e.g. vision, attendance, forecasting, chatbot)..." />
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+
+          <div class="project-card project-item" data-keywords="attendance computer vision opencv">
+            <img src="assets/attendence.jpg" alt="Attendance System" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/Computer-Vision-based-Attendence-System" target="_blank">Computer Vision Attendance System</a></h4>
+              <p class="project-desc">Facial recognition based automated system with real-time tracking.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/Computer-Vision-based-Attendence-System" target="_blank">GitHub &rarr;</a>
+                <a href="https://studentprojectshub.blogspot.com/2021/01/computer-vision-based-attendance.html" target="_blank">Blog Article</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="autonomous car vision self driving">
+            <img src="assets/auto.jpg" alt="Autonomous Car Vision" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/Autonomous-car-Vision/tree/main/Autonomous%20Car%20Vision" target="_blank">Autonomous Car Vision</a></h4>
+              <p class="project-desc">Real-time object perception and navigation for self-driving vehicles.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/Autonomous-car-Vision/tree/main/Autonomous%20Car%20Vision" target="_blank">GitHub &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="chatbot nlp neural networks">
+            <img src="assets/Chatbot.jpg" alt="General Chatbot" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/Simple-Chat-Bot-with-Python" target="_blank">General Chatbot with Python</a></h4>
+              <p class="project-desc">Artificial neural network conversational model built from scratch.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/Simple-Chat-Bot-with-Python" target="_blank">GitHub &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="covid medical radiography vision">
+            <img src="assets/covid24.jpg" alt="Covid Detection" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/Corona-Detection" target="_blank">Covid Detection with Medical Images</a></h4>
+              <p class="project-desc">Deep transfer learning model for chest X-ray disease detection.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/Corona-Detection" target="_blank">GitHub &rarr;</a>
+                <a href="https://ieeexplore.ieee.org/document/9579538" target="_blank">IEEE Paper</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="covid forecasting regression time series">
+            <img src="assets/covid.jpg" alt="Covid Forecasting" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/COVID-19-Detection-and-ForeCasting" target="_blank">Covid-19 Forecasting via Regression</a></h4>
+              <p class="project-desc">Time-series epidemiological statistical forecasting models.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/COVID-19-Detection-and-ForeCasting" target="_blank">GitHub &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="credit card fraud finance anomaly detection">
+            <img src="assets/credit.jpg" alt="Credit Fraud Detection" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/Credit-Card-fraudulent-detection" target="_blank">Credit Card Fraud Detection</a></h4>
+              <p class="project-desc">Imbalanced classification and anomaly detection models for finance.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/Credit-Card-fraudulent-detection" target="_blank">GitHub &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="face recognition haarcascades opencv">
+            <img src="assets/face.jpg" alt="Face Recognition" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/Face-Recognition-with-OpenCV-HaarCascades" target="_blank">Face Recognition with HaarCascades</a></h4>
+              <p class="project-desc">OpenCV feature-based cascade classifiers for facial detection.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/Face-Recognition-with-OpenCV-HaarCascades" target="_blank">GitHub &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="food demand forecasting analytics time series">
+            <img src="assets/food.jpg" alt="Food Demand Forecasting" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/Food-Demand-Forecasting-Analytics-Vidhya" target="_blank">Food Demand Forecasting</a></h4>
+              <p class="project-desc">Predictive supply chain analytics with gradient boosting models.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/Food-Demand-Forecasting-Analytics-Vidhya" target="_blank">GitHub &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="google analytics revenue prediction tabular">
+            <img src="assets/google.jpg" alt="Google Analytics Revenue" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/All-Data-Science-Projects/tree/main/Google%20analytics%20Revenue%20Prediction" target="_blank">Google Analytics Revenue Prediction</a></h4>
+              <p class="project-desc">Kaggle customer transaction revenue prediction pipeline.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/All-Data-Science-Projects/tree/main/Google%20analytics%20Revenue%20Prediction" target="_blank">GitHub &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="handwritten digit recognition cnn">
+            <img src="assets/hand.png" alt="Handwritten Digit Recognition" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/Hand-Written-Number-Recognition" target="_blank">Handwritten Number Recognition</a></h4>
+              <p class="project-desc">MNIST Convolutional Neural Network image classifier.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/Hand-Written-Number-Recognition" target="_blank">GitHub &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="human activity recognition sensors time series">
+            <img src="assets/human.jpg" alt="Human Activity Recognition" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/Human-Activity-Recognition" target="_blank">Human Activity Recognition</a></h4>
+              <p class="project-desc">Smartphone sensor signal activity classification with LSTM/SVM.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/Human-Activity-Recognition" target="_blank">GitHub &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="invoice management parser ocr document text">
+            <img src="assets/invoice.jpg" alt="Invoice Management" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/Invoice-Management-System" target="_blank">Invoice Management System</a></h4>
+              <p class="project-desc">Full-stack automated financial document parsing framework.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/Invoice-Management-System" target="_blank">GitHub &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="lane detection path detection opencv vision self driving">
+            <img src="assets/lane.jpg" alt="Lane Lines Detection" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/Path-Detection-using-Lane-Lines-with-OpenCV" target="_blank">Path Detection with OpenCV</a></h4>
+              <p class="project-desc">Bird's eye view perspective transform lane finding system.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/Path-Detection-using-Lane-Lines-with-OpenCV" target="_blank">GitHub &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="malaria detection blood smear medical vision">
+            <img src="assets/malaria.jpg" alt="Malaria Detection" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/End-to-End-Malaria-Detection" target="_blank">End to End Malaria Detection</a></h4>
+              <p class="project-desc">Parasitic blood cell classification model deployed end-to-end.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/End-to-End-Malaria-Detection" target="_blank">GitHub &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="sudoku solver augmented reality computer vision">
+            <img src="assets/sudoku.jpg" alt="AR Sudoku Solver" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/SudukoSolver" target="_blank">AR Sudoku Solver</a></h4>
+              <p class="project-desc">Real-time camera augmented reality grid projection and backtrack solver.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/SudukoSolver" target="_blank">GitHub &rarr;</a>
+                <a href="https://www.irjet.net/archives/V7/i10/IRJET-V7I10253.pdf" target="_blank">Publication</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card project-item" data-keywords="traffic signs recognition opencv vision">
+            <img src="assets/traffic.jpg" alt="Traffic Signs Recognition" class="project-thumb" />
+            <div class="project-details">
+              <h4 class="project-name"><a href="https://github.com/GSaiDheeraj/Traffic-Signs-Recognition" target="_blank">Realtime Traffic Signs Recognition</a></h4>
+              <p class="project-desc">Convolutional classifier for German Traffic Sign Recognition Benchmark.</p>
+              <div class="project-links">
+                <a href="https://github.com/GSaiDheeraj/Traffic-Signs-Recognition" target="_blank">GitHub &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS SECTION -->
+      <section id="certifications" class="section-block">
+        <div class="section-header">
+          <h2 class="section-title"><span class="title-decor">&gt;</span> verified_certifications.key</h2>
+          <span class="section-tag">Stanford, IBM, DeepLearning.AI &amp; HackerRank</span>
+        </div>
+
+        <div class="certs-grid">
+
+          <div class="cert-card">
+            <a href="https://drive.google.com/file/d/1fL2lYS6BZXZyntqOksFDkE6j4bu6Eh1V/view" target="_blank">
+              <div class="cert-img-wrapper"><img src="assets/stanford.jpg" alt="Stanford ML" /></div>
+            </a>
+            <div class="cert-title">Machine Learning — Stanford University</div>
+          </div>
+
+          <div class="cert-card">
+            <a href="https://drive.google.com/file/d/1c73wlB5pUkvYcQznxmjzsiHXgaeA8iIY/view" target="_blank">
+              <div class="cert-img-wrapper"><img src="assets/BI.jpg" alt="Data Science" /></div>
+            </a>
+            <div class="cert-title">Data Science Learning Path</div>
+          </div>
+
+          <div class="cert-card">
+            <a href="https://drive.google.com/file/d/1QzIrBcL7iwQzJZx8VUCkRvxHGKsD5TBp/view" target="_blank">
+              <div class="cert-img-wrapper"><img src="assets/ibm.jpg" alt="IBM AI" /></div>
+            </a>
+            <div class="cert-title">IBM AI Engineering Specialization</div>
+          </div>
+
+          <div class="cert-card">
+            <a href="https://drive.google.com/file/d/1-b42Hkc34bF1mO2qCETeC6Az1ympf7vk/view" target="_blank">
+              <div class="cert-img-wrapper"><img src="assets/dai.jpg" alt="DeepLearning.AI" /></div>
+            </a>
+            <div class="cert-title">AI for Medicine — DeepLearning.AI</div>
+          </div>
+
+          <div class="cert-card">
+            <a href="https://drive.google.com/file/d/1GY2kQmp5IkGcjKfu79SrW8Ztql4e6Ji-/view?usp=sharing" target="_blank">
+              <div class="cert-img-wrapper"><img src="assets/dai.jpg" alt="Tensorflow" /></div>
+            </a>
+            <div class="cert-title">TensorFlow Developer Specialization</div>
+          </div>
+
+          <div class="cert-card">
+            <a href="https://drive.google.com/file/d/1ET0NsmPqqJnd3Hbs8NsQhQSE1x7PXlFv/view?usp=sharing" target="_blank">
+              <div class="cert-img-wrapper"><img src="assets/dai.jpg" alt="Azure AI" /></div>
+            </a>
+            <div class="cert-title">Microsoft Azure AI Fundamentals (AI-900)</div>
+          </div>
+
+          <div class="cert-card">
+            <a href="https://drive.google.com/file/d/1ai9yA9uSsWvRBO5mISjAfIWP72hlsIXX/view" target="_blank">
+              <div class="cert-img-wrapper"><img src="assets/HR.png" alt="HackerRank" /></div>
+            </a>
+            <div class="cert-title">HackerRank Problem Solving Test</div>
+          </div>
+
+          <div class="cert-card">
+            <a href="https://drive.google.com/file/d/1PJCj8v7Yvf6fXIJFlsQ8Nc9ittmC0CB7/view" target="_blank">
+              <div class="cert-img-wrapper"><img src="assets/HR.png" alt="HackerRank Python" /></div>
+            </a>
+            <div class="cert-title">HackerRank Python Test</div>
+          </div>
+
+          <div class="cert-card">
+            <a href="https://drive.google.com/file/d/1RAeUzET_hdoKEd2zkEDjEx9V_AutSerG/view" target="_blank">
+              <div class="cert-img-wrapper"><img src="assets/HR.png" alt="HackerRank SQL" /></div>
+            </a>
+            <div class="cert-title">HackerRank SQL (Basic &amp; Intermediate)</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- CURATED BLOGS & READINGS -->
+      <section id="reading-list" class="section-block">
+        <div class="section-header">
+          <h2 class="section-title"><span class="title-decor">&gt;</span> engineering_&amp;_quant_reading_list.md</h2>
+          <span class="section-tag">Curated Industry Tech Blogs &amp; Quant Research</span>
+        </div>
+
+        <div class="reading-grid">
+
+          <div class="read-category-card">
+            <h4 class="read-cat-title">🤖 AI &amp; LLM Research</h4>
+            <div class="link-pills">
+              <a href="https://jalammar.github.io/" target="_blank">Jay Alammar</a>
+              <a href="https://lena-voita.github.io/nlp_course.html" target="_blank">Lena Voita NLP</a>
+              <a href="https://openai.com/research/index/" target="_blank">OpenAI Research</a>
+              <a href="https://distill.pub/" target="_blank">Distill.pub</a>
+              <a href="https://machinelearningmastery.com/blog/#" target="_blank">ML Mastery</a>
+              <a href="https://aws.amazon.com/blogs/machine-learning/" target="_blank">AWS ML Blog</a>
+              <a href="https://blog.paperspace.com/" target="_blank">PaperSpace</a>
+              <a href="https://bair.berkeley.edu/blog/" target="_blank">BAIR</a>
+              <a href="https://deepmind.google/discover/blog/" target="_blank">DeepMind</a>
+              <a href="https://www.anthropic.com/engineering" target="_blank">Anthropic Eng</a>
+              <a href="https://ai.meta.com/results/?content_types%5B0%5D=publication" target="_blank">Meta AI</a>
+            </div>
+          </div>
+
+          <div class="read-category-card">
+            <h4 class="read-cat-title">⚙️ Systems &amp; Engineering Blogs</h4>
+            <div class="link-pills">
+              <a href="https://netflixtechblog.com/" target="_blank">Netflix Tech</a>
+              <a href="https://eng.uber.com/" target="_blank">Uber Eng</a>
+              <a href="https://medium.com/airbnb-engineering" target="_blank">Airbnb Eng</a>
+              <a href="https://instagram-engineering.com/" target="_blank">Instagram Eng</a>
+              <a href="https://dropbox.tech/" target="_blank">Dropbox Tech</a>
+              <a href="https://engineering.atspotify.com/" target="_blank">Spotify Eng</a>
+              <a href="https://medium.com/@Pinterest_Engineering" target="_blank">Pinterest Eng</a>
+              <a href="https://engineering.linkedin.com/blog" target="_blank">LinkedIn Eng</a>
+              <a href="https://slack.engineering/" target="_blank">Slack Eng</a>
+              <a href="https://blog.twitter.com/engineering/en_us" target="_blank">Twitter Eng</a>
+              <a href="https://engineering.fb.com/" target="_blank">Meta / FB Eng</a>
+              <a href="https://www.atlassian.com/engineering" target="_blank">Atlassian Eng</a>
+              <a href="https://shopify.engineering/" target="_blank">Shopify Eng</a>
+              <a href="https://stripe.com/blog/engineering" target="_blank">Stripe Eng</a>
+              <a href="https://blog.booking.com/" target="_blank">Booking Blog</a>
+              <a href="https://blog.cloudflare.com/" target="_blank">Cloudflare</a>
+              <a href="https://medium.com/zoom-developer-blog" target="_blank">Zoom Dev</a>
+              <a href="https://medium.com/paypal-engineering" target="_blank">PayPal Eng</a>
+              <a href="https://redditblog.com/topic/technology/" target="_blank">Reddit Tech</a>
+              <a href="https://medium.com/expedia-group-tech" target="_blank">Expedia Tech</a>
+              <a href="https://www.twilio.com/blog/engineering" target="_blank">Twilio Eng</a>
+              <a href="https://tech.flipkart.com/" target="_blank">Flipkart Tech</a>
+              <a href="https://tech.instacart.com/" target="_blank">Instacart Tech</a>
+              <a href="https://github.blog/category/engineering/" target="_blank">GitHub Eng</a>
+            </div>
+          </div>
+
+          <div class="read-category-card">
+            <h4 class="read-cat-title">📈 Quant Trading &amp; Systems</h4>
+            <div class="link-pills">
+              <a href="https://www.quantstart.com/articles/topic/systematic-trading/" target="_blank">QuantStart</a>
+              <a href="https://www.quantifiedstrategies.com/blog/" target="_blank">QuantifiedStrategies</a>
+              <a href="https://quantifiableedges.com/blog/" target="_blank">QuantifiableEdges</a>
+              <a href="https://traderinsight.com/article-archives/" target="_blank">TraderInsight</a>
+              <a href="https://quantocracy.com/" target="_blank">Quantocracy</a>
+              <a href="https://alphaarchitect.com/blog/" target="_blank">AlphaArchitect</a>
+              <a href="https://robotwealth.com/blog/" target="_blank">RobotWealth</a>
+              <a href="https://financial-hacker.com/" target="_blank">Financial Hacker</a>
+              <a href="https://blog.quantinsti.com/" target="_blank">QuantInsti</a>
+              <a href="https://alvarezquanttrading.com/blog/" target="_blank">Alvarez QuantTrading</a>
+            </div>
+          </div>
+
+          <div class="read-category-card">
+            <h4 class="read-cat-title">📊 Economic Indicators &amp; Data</h4>
+            <div class="link-pills">
+              <a href="https://tradingeconomics.com/india/indicators" target="_blank">TradingEconomics India</a>
+              <a href="https://tradingeconomics.com/united-states/indicators" target="_blank">TradingEconomics USA</a>
+              <a href="https://tradingeconomics.com/china/indicators" target="_blank">TradingEconomics China</a>
+              <a href="https://in.investing.com/news/economic-indicators" target="_blank">Investing.com Global</a>
+            </div>
+          </div>
+
+          <div class="read-category-card">
+            <h4 class="read-cat-title">💹 Stock Analysis &amp; Markets</h4>
+            <div class="link-pills">
+              <a href="https://www.screener.in/" target="_blank">Screener India</a>
+              <a href="https://finance.yahoo.com/" target="_blank">Yahoo Finance</a>
+              <a href="https://www.cnbctv18.com/market/" target="_blank">CNBC Live Market</a>
+              <a href="https://www.livemint.com/market/stock-market-news" target="_blank">Mint Market News</a>
+              <a href="https://www.cnbc.com/world/?region=world" target="_blank">CNBC World</a>
+              <a href="https://www.nirmalbang.com/company-quarterly-results.aspx" target="_blank">India Quarterly Results</a>
+              <a href="https://web.stockedge.com/fii-activity" target="_blank">StockEdge FII/DII</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2026 Sai Dheeraj Gummadi. Designed with <span class="heart">&hearts;</span>, clean lines &amp; zero bloat.</p>
+        <p class="footer-cmd">Run <kbd>⌘K</kbd> to launch terminal menu</p>
       </div>
-    </div>
-    <hr>
+    </footer>
 
-    <div style="margin-top: 1px; padding-bottom: 1px;">
-    <div class="container">
-      <div class="ctitle">Usual Blogs I Follow</div>
-      <ul>
-        <li>AI: <a href="https://lena-voita.github.io/nlp_course.html">Lena Voita</a>, <a href="https://openai.com/research/index/">OpenAI</a>, <a href="https://distill.pub/">Distill</a>, <a href="https://machinelearningmastery.com/blog/#">MachineLearningMastery</a>, <a href="https://aws.amazon.com/blogs/machine-learning/">AWS Blogs</a>, <a href="https://blog.paperspace.com/">PaperSpace</a>, <a href="https://bair.berkeley.edu/blog/">BAIR</a>, <a href="https://deepmind.google/discover/blog/">DeepMind Blogs</a>, <a href="https://jalammar.github.io/">Jay Alammar</a>, <a href="https://www.anthropic.com/engineering">Anthropic</a>, <a href="https://ai.meta.com/results/?content_types%5B0%5D=publication">Meta AI</a>  </li>
-        <li>Engineering: <a href="https://netflixtechblog.com/">Netflix Blog</a>, <a href="https://eng.uber.com/">Uber Blog</a>, <a href="https://medium.com/airbnb-engineering">Airbnb Blog</a>, <a href="https://instagram-engineering.com/">Instagram Blog</a>, <a href="https://dropbox.tech/">Dropbox Blog</a>, <a href="https://engineering.atspotify.com/">Sopitfy Blog</a>, <a href="https://medium.com/@Pinterest_Engineering">Pinterest Blog</a>, <a href="https://engineering.linkedin.com/blog">LinkedIn Blog</a>, <a href="https://slack.engineering/">Slack Blog</a>, <a href="https://blog.twitter.com/engineering/en_us">Twitter Blog</a>,<a href="https://engineering.fb.com/">FB Blog</a>, <a href="https://www.atlassian.com/engineering">Atlassian Blog</a>, <a href="https://shopify.engineering/">Shopify Blog</a>, <a href="https://stripe.com/blog/engineering">Stripe Blog</a>, <a href="https://blog.booking.com/">Booking Blog</a>, <a href="https://blog.cloudflare.com/">Cloudflare Blog</a>, <a href="https://medium.com/zoom-developer-blog">Zoom Blog</a>,<a href="https://medium.com/paypal-engineering">Paypal Blog</a>,<a href="https://redditblog.com/topic/technology/">Reddit Blog</a>,<a href="https://medium.com/expedia-group-tech">Expedia Blog</a>,<a href="https://www.twilio.com/blog/engineering">Twilio Blog</a>,<a href="https://tech.flipkart.com/">Flipkart Blog</a>,<a href="https://tech.instacart.com/">Instacart Blog</a>, <a href ="https://github.blog/category/engineering/">Github Engineering</a>
-	<li>Quant: <a href="https://www.quantstart.com/articles/topic/systematic-trading/">QuantStart</a>, <a href="https://www.quantifiedstrategies.com/blog/">QuantifiedStrategies</a>, <a href="https://quantifiableedges.com/blog/">QuantifiableEdges</a>, <a href="https://traderinsight.com/article-archives/">TraderInsight</a>, <a href="https://quantocracy.com/">Qantocracy</a>, <a href="https://alphaarchitect.com/blog/">AlphaArchitect</a>, <a href="https://robotwealth.com/blog/">RobotWealth</a>, <a href="https://financial-hacker.com/">Financial hacker</a>, <a href="https://blog.quantinsti.com/">QantInsti</a>, <a href="https://alvarezquanttrading.com/blog/"> Alvarez QuantTrading</a></li>
-        <li>Economic Indicators Data: <a href="https://tradingeconomics.com/india/indicators">TradingEconomics India</a>, <a href="https://in.investing.com/news/economic-indicators">Investing.com Global Data</a>, <a href="https://tradingeconomics.com/united-states/indicators">TradingEconomics USA</a>, <a href="https://tradingeconomics.com/china/indicators">TradingEconomics China</a></li>
-        <li>Stock Analysis: <a href="https://www.screener.in/">Screener India</a>, <a href="https://finance.yahoo.com/">Yahoo Finance</a>, <a href="https://www.cnbctv18.com/market/">CNBC live market News</a>, <a href="https://www.livemint.com/market/stock-market-news">Mint Market News</a>, <a href="https://www.cnbc.com/world/?region=world">CNBC world market news</a>, <a href="https://www.nirmalbang.com/company-quarterly-results.aspx"> INdia company Quarterly results</a>, <a href="https://web.stockedge.com/fii-activity">StockEdge FII/DII data</a> </li>
-      </ul>
-    </div>
-    </div>
-    
-    <br><br><br><br>
-
-    <!-- attempt hiding from spambots :p -->
-    <script type="text/javascript">
-      var e_is_shown = false;
-      document.getElementById('iemail').addEventListener("click", function(){
-        let demail = document.getElementById('demail');
-        demail.innerHTML = 'andrej.karpathy' + ' _at_ ' + 'gmail' + '.com';
-        demail.style.opacity = e_is_shown ? 0 : 1;
-        e_is_shown = !e_is_shown;
-      })
-
-       // Theme toggle functionality
-      function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute("data-theme");
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
-        document.documentElement.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme);
-      }
-
-      // Initialize theme on page load
-      document.addEventListener("DOMContentLoaded", () => {
-        const savedTheme = localStorage.getItem("theme") || "light";
-        document.documentElement.setAttribute("data-theme", savedTheme);
-      });
-
-      // Ensure theme is applied immediately
-      const savedTheme = localStorage.getItem("theme") || "light";
-      document.documentElement.setAttribute("data-theme", savedTheme);
-
-    </script>
+    <!-- Scripts -->
+    <script src="script.js"></script>
   </body>
 </html>
-
-
-
-
-
