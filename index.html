@@ -4,27 +4,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sai Dheeraj Gummadi | AI/ML Engineer & Researcher</title>
-    <!-- Modern Google Fonts: JetBrains Mono / Fira Code & Inter -->
+    <!-- Google Fonts: Plus Jakarta Sans / Roboto / JetBrains Mono / Fira Code -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
+    <!-- Interactive Background Physics Canvas -->
+    <canvas id="bgPhysicsCanvas"></canvas>
+
     <!-- Top Navigation Bar -->
     <nav class="navbar">
       <div class="nav-container">
         <a href="#" class="nav-brand">
-          <span class="prompt-symbol">&gt;_</span> gsaidheeraj<span class="blink">.ai</span>
+          gsaidheeraj<span class="blink">.ai</span>
         </a>
         <div class="nav-links" id="navLinks">
-          <a href="#about" class="nav-link">&lt;about/&gt;</a>
-          <a href="#experience" class="nav-link">&lt;exp/&gt;</a>
-          <a href="#publications" class="nav-link">&lt;research/&gt;</a>
-          <a href="#books-talks" class="nav-link">&lt;books&talks/&gt;</a>
-          <a href="#projects" class="nav-link">&lt;projects/&gt;</a>
-          <a href="#certifications" class="nav-link">&lt;certs/&gt;</a>
-          <a href="blog/home.html" class="nav-link highlight">&lt;blog/&gt;</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#publications" class="nav-link">Research</a>
+          <a href="#books-talks" class="nav-link">Books &amp; Talks</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#certifications" class="nav-link">Certifications</a>
+          <a href="blog/home.html" class="nav-link">Blog</a>
         </div>
         <div class="nav-actions">
           <button class="cmd-trigger" id="cmdTrigger" title="Open Interactive Terminal (Ctrl+K or ~)">
@@ -46,7 +49,7 @@
             <span class="term-btn btn-min"></span>
             <span class="term-btn btn-max"></span>
           </div>
-          <div class="term-title">bash — gsaidheeraj@system:~</div>
+          <div class="term-title">Interactive Assistant &amp; Search (⌘K)</div>
         </div>
         <div class="term-body" id="termBody">
           <div class="term-line">Welcome to Sai Dheeraj's interactive terminal v2.5.0!</div>
@@ -98,7 +101,7 @@
               <a href="mailto:dheerajsaigummadi@gmail.com" class="social-pill">
                 <img src="assets/gmail.webp" alt="Gmail" /> Email
               </a>
-              <a href="blog/home.html" class="social-pill highlight">
+              <a href="blog/home.html" class="social-pill">
                 <img src="assets/blog.png" alt="Blog" /> Tech Blog
               </a>
               <a href="https://medium.com/@gsaidheeraj" target="_blank" class="social-pill">
@@ -134,12 +137,13 @@
 
       <!-- EXPERIENCE & EDUCATION SECTION -->
       <section id="experience" class="section-block">
-        <div class="section-header">
-          <h2 class="section-title"><span class="title-decor">&gt;</span> career_trajectory.log</h2>
-          <span class="section-tag">Work Experience & Academic Degrees</span>
+        <div class="section-header collapsible-header" role="button" aria-expanded="true" tabindex="0">
+          <h2 class="section-title"><span class="toggle-icon">▼</span> Work Experience &amp; Education</h2>
+          <span class="section-tag">Professional Career &amp; Academic Background</span>
         </div>
 
-        <div class="terminal-timeline">
+        <div class="section-content">
+          <div class="terminal-timeline">
 
           <!-- Entry: FactSet -->
           <div class="timeline-card">
@@ -279,15 +283,17 @@
           </div>
 
         </div>
+        </div>
       </section>
 
       <!-- PUBLICATIONS & PATENTS SECTION -->
       <section id="publications" class="section-block">
-        <div class="section-header">
-          <h2 class="section-title"><span class="title-decor">&gt;</span> research_papers_&amp;_patents.bib</h2>
-          <span class="section-tag">8 Papers &bull; 1 Granted US Patent &bull; <a href="https://scholar.google.com/citations?user=ERJe5ugAAAAJ&hl=en" target="_blank">Google Scholar</a></span>
+        <div class="section-header collapsible-header" role="button" aria-expanded="true" tabindex="0">
+          <h2 class="section-title"><span class="toggle-icon">▼</span> Research Publications &amp; Patents</h2>
+          <span class="section-tag">8 Research Papers &bull; 1 Granted US Patent &bull; <a href="https://scholar.google.com/citations?user=ERJe5ugAAAAJ&hl=en" target="_blank">Google Scholar Profile</a></span>
         </div>
 
+        <div class="section-content">
         <!-- Filter / Search box -->
         <div class="filter-bar">
           <input type="text" id="paperSearch" class="search-input" placeholder="⚡ Search publications by title, venue, or keyword..." />
@@ -378,17 +384,24 @@
           </div>
 
         </div>
+        </div>
       </section>
 
       <!-- BOOKS & FEATURED TALKS -->
       <section id="books-talks" class="section-block">
+        <div class="section-header collapsible-header" role="button" aria-expanded="true" tabindex="0">
+          <h2 class="section-title"><span class="toggle-icon">▼</span> Books &amp; Keynotes</h2>
+          <span class="section-tag">Published Books &amp; Featured Lectures</span>
+        </div>
+
+        <div class="section-content">
         <div class="grid-2col">
 
           <!-- Books Column -->
           <div class="col-box">
-            <div class="section-header">
-              <h2 class="section-title"><span class="title-decor">&gt;</span> published_books.json</h2>
-              <span class="section-tag">Available on Amazon</span>
+            <div class="sub-header">
+              <h3 class="sub-title">Published Books</h3>
+              <span class="section-tag">Available Worldwide on Amazon</span>
             </div>
             <div class="books-wrapper">
 
@@ -415,13 +428,13 @@
 
           <!-- Featured Talks Column -->
           <div class="col-box">
-            <div class="section-header">
-              <h2 class="section-title"><span class="title-decor">&gt;</span> keynotes_&amp;_talks.sh</h2>
-              <span class="section-tag">Invited Guest Keynotes</span>
+            <div class="sub-header">
+              <h3 class="sub-title">Keynotes &amp; Featured Talks</h3>
+              <span class="section-tag">Invited Guest Keynote Lectures</span>
             </div>
             <div class="talks-list">
               <div class="talk-item">
-                <div class="talk-bullet">&gt;</div>
+                <div class="talk-bullet">•</div>
                 <div class="talk-content">
                   <strong>Deep Learning for Disease Diagnosis</strong> — Universidad Nacional Federico Villarreal, Lima, Peru, South America.
                   [<a href="https://drive.google.com/file/d/1fiVzQb9UBuEHmue10Tw0qlqs3fa_Gnww/view" target="_blank">Slides / Certificate</a>]
@@ -459,15 +472,17 @@
           </div>
 
         </div>
+        </div>
       </section>
 
       <!-- PET PROJECTS SECTION -->
       <section id="projects" class="section-block">
-        <div class="section-header">
-          <h2 class="section-title"><span class="title-decor">&gt;</span> open_source_projects.git</h2>
-          <span class="section-tag">Interactive Repository Showcase</span>
+        <div class="section-header collapsible-header" role="button" aria-expanded="true" tabindex="0">
+          <h2 class="section-title"><span class="toggle-icon">▼</span> Projects &amp; Open Source</h2>
+          <span class="section-tag">Interactive Project Showcase</span>
         </div>
 
+        <div class="section-content">
         <div class="projects-filter-bar">
           <input type="text" id="projectSearch" class="search-input" placeholder="🔍 Search projects (e.g. vision, attendance, forecasting, chatbot)..." />
         </div>
@@ -654,15 +669,17 @@
           </div>
 
         </div>
+        </div>
       </section>
 
       <!-- CERTIFICATIONS SECTION -->
       <section id="certifications" class="section-block">
-        <div class="section-header">
-          <h2 class="section-title"><span class="title-decor">&gt;</span> verified_certifications.key</h2>
-          <span class="section-tag">Stanford, IBM, DeepLearning.AI &amp; HackerRank</span>
+        <div class="section-header collapsible-header" role="button" aria-expanded="true" tabindex="0">
+          <h2 class="section-title"><span class="toggle-icon">▼</span> Certifications &amp; Credentials</h2>
+          <span class="section-tag">Stanford, IBM, DeepLearning.AI &amp; HackerRank Verified Badges</span>
         </div>
 
+        <div class="section-content">
         <div class="certs-grid">
 
           <div class="cert-card">
@@ -729,15 +746,17 @@
           </div>
 
         </div>
+        </div>
       </section>
 
       <!-- CURATED BLOGS & READINGS -->
       <section id="reading-list" class="section-block">
-        <div class="section-header">
-          <h2 class="section-title"><span class="title-decor">&gt;</span> engineering_&amp;_quant_reading_list.md</h2>
-          <span class="section-tag">Curated Industry Tech Blogs &amp; Quant Research</span>
+        <div class="section-header collapsible-header" role="button" aria-expanded="true" tabindex="0">
+          <h2 class="section-title"><span class="toggle-icon">▼</span> Curated Engineering &amp; Quant Reading List</h2>
+          <span class="section-tag">Industry Engineering Blogs &amp; Market Analysis Tools</span>
         </div>
 
+        <div class="section-content">
         <div class="reading-grid">
 
           <div class="read-category-card">
@@ -826,6 +845,7 @@
             </div>
           </div>
 
+        </div>
         </div>
       </section>
 
