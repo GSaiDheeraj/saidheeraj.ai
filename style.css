@@ -231,11 +231,6 @@ kbd {
   color: var(--text-primary);
 }
 
-.title-decor {
-  color: var(--google-green);
-  margin-right: 6px;
-  font-family: var(--font-mono);
-}
 
 .section-tag {
   font-size: 0.88rem;
@@ -301,10 +296,6 @@ kbd {
   text-decoration: none;
 }
 
-.prompt-symbol {
-  color: var(--google-blue);
-  font-family: var(--font-mono);
-}
 
 .blink {
   color: var(--google-green);
