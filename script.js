@@ -6,9 +6,41 @@
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initCursorGlow();
+  initCollapsibleSections();
   initSearchAndFilters();
   initTerminal();
 });
+
+/* ==========================================
+   Collapsible Sections Logic
+   ========================================== */
+function initCollapsibleSections() {
+  const headers = document.querySelectorAll('.collapsible-header');
+
+  headers.forEach(header => {
+    const sectionBlock = header.closest('.section-block');
+    const toggleIcon = header.querySelector('.toggle-icon');
+
+    function toggleSection() {
+      if (!sectionBlock) return;
+      sectionBlock.classList.toggle('collapsed');
+      const isExpanded = !sectionBlock.classList.contains('collapsed');
+      header.setAttribute('aria-expanded', isExpanded.toString());
+      if (toggleIcon) {
+        toggleIcon.textContent = isExpanded ? '▼' : '►';
+      }
+    }
+
+    header.addEventListener('click', toggleSection);
+
+    header.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleSection();
+      }
+    });
+  });
+}
 
 /* ==========================================
    Cursor Spotlight Glow
