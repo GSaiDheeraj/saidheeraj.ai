@@ -93,25 +93,36 @@ body {
   overflow-x: hidden;
 }
 
-/* Mouse Glow Effect */
+/* Background Physics Canvas & Mouse Glow Effect */
+#bgPhysicsCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
 .cursor-glow {
   pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: 1;
   background: radial-gradient(
-    650px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
-    rgba(66, 133, 244, 0.07),
-    transparent 80%
+    600px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
+    rgba(66, 133, 244, 0.09),
+    transparent 75%
   );
   transition: opacity 0.3s ease;
 }
 
 [data-theme="light"] .cursor-glow {
   background: radial-gradient(
-    650px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
-    rgba(26, 115, 232, 0.05),
-    transparent 80%
+    600px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
+    rgba(26, 115, 232, 0.06),
+    transparent 75%
   );
 }
 
