@@ -808,6 +808,243 @@ kbd {
   color: var(--google-blue);
 }
 
+/* TESTIMONIALS & READER REVIEWS */
+.testimonials-intro {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.testimonial-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+}
+
+.testimonial-card:hover {
+  border-color: var(--google-blue);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.testimonial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.platform-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.badge-icon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.amazon-badge {
+  background: rgba(251, 188, 5, 0.12);
+  color: #f59e0b;
+  border: 1px solid rgba(251, 188, 5, 0.3);
+}
+
+.topmate-badge {
+  background: rgba(52, 168, 83, 0.12);
+  color: var(--google-green);
+  border: 1px solid rgba(52, 168, 83, 0.3);
+}
+
+.email-badge {
+  background: rgba(66, 133, 244, 0.12);
+  color: var(--google-blue);
+  border: 1px solid rgba(66, 133, 244, 0.3);
+}
+
+.star-rating {
+  color: #fbbf24;
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+}
+
+.testimonial-quote {
+  font-style: italic;
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 18px;
+  position: relative;
+  padding-left: 14px;
+  border-left: 3px solid var(--google-blue);
+}
+
+.testimonial-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border-color);
+}
+
+.reviewer-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewer-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.reviewer-role {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.proof-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--google-blue);
+  font-family: var(--font-google);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.proof-btn:hover {
+  background: rgba(66, 133, 244, 0.15);
+  border-color: var(--google-blue);
+  box-shadow: var(--shadow-glow);
+}
+
+/* PROOF LIGHTBOX MODAL */
+.proof-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2500;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.proof-modal.active {
+  display: flex;
+}
+
+.proof-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(10px);
+}
+
+.proof-modal-container {
+  position: relative;
+  z-index: 2;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  max-width: 640px;
+  width: 100%;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: modalScaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalScaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.proof-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.proof-modal-close:hover {
+  border-color: var(--google-red);
+  color: var(--google-red);
+}
+
+.proof-modal-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.proof-modal-img-wrapper {
+  width: 100%;
+  max-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  padding: 10px;
+}
+
+.proof-modal-img {
+  max-width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
+.proof-modal-caption {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  text-align: center;
+}
+
 /* TWO-COLUMN LAYOUT (BOOKS & TALKS) */
 .grid-2col {
   display: grid;

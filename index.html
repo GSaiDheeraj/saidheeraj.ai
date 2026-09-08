@@ -25,6 +25,7 @@
           <a href="#experience" class="nav-link">Experience</a>
           <a href="#publications" class="nav-link">Research</a>
           <a href="#books-talks" class="nav-link">Books &amp; Talks</a>
+          <a href="#testimonials" class="nav-link">Testimonials</a>
           <a href="#projects" class="nav-link">Projects</a>
           <a href="#certifications" class="nav-link">Certifications</a>
           <a href="blog/home.html" class="nav-link">Blog</a>
@@ -475,6 +476,90 @@
         </div>
       </section>
 
+      <!-- TESTIMONIALS & READER REVIEWS SECTION -->
+      <section id="testimonials" class="section-block">
+        <div class="section-header collapsible-header" role="button" aria-expanded="true" tabindex="0">
+          <h2 class="section-title"><span class="toggle-icon">▼</span> Testimonials &amp; Reader Reviews</h2>
+          <span class="section-tag">Verified Feedback from Amazon, Topmate Mentees &amp; Reader Emails</span>
+        </div>
+
+        <div class="section-content">
+          <p class="testimonials-intro">
+            Here are verified reviews and feedback received across Amazon book readers, 1-on-1 Topmate mentorship sessions, and direct email messages. Click on <strong>"📸 View Proof Screenshot"</strong> on any card to view image proof.
+          </p>
+
+          <div class="testimonials-grid">
+
+            <!-- Amazon Book Review 1 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <span class="badge platform-badge amazon-badge">
+                  <img src="assets/book1.png" alt="Amazon" class="badge-icon" /> Amazon Book Review
+                </span>
+                <div class="star-rating" aria-label="5 out of 5 stars">★★★★★</div>
+              </div>
+              <blockquote class="testimonial-quote">
+                "An indispensable guide for data science interviews! The case study frameworks and system design breakdowns in 'Cracking Data Science Case Study Interview' saved me weeks of prep time."
+              </blockquote>
+              <div class="testimonial-footer">
+                <div class="reviewer-info">
+                  <span class="reviewer-name">Verified Amazon Reader</span>
+                  <span class="reviewer-role">Senior Data Scientist</span>
+                </div>
+                <button class="proof-btn" data-proof-img="assets/book1.png" data-proof-title="Amazon Book Review Proof" data-proof-caption="Verified 5-Star Purchase Review on Amazon for 'Cracking Data Science Case Study Interview'">
+                  📸 View Proof
+                </button>
+              </div>
+            </div>
+
+            <!-- Topmate Review 1 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <span class="badge platform-badge topmate-badge">
+                  <img src="assets/topmate.png" alt="Topmate" class="badge-icon" /> Topmate Mentorship
+                </span>
+                <div class="star-rating" aria-label="5 out of 5 stars">★★★★★</div>
+              </div>
+              <blockquote class="testimonial-quote">
+                "Sai Dheeraj provided actionable career guidance on transition into AI/ML roles. His deep dive into LLM fine-tuning and production RAG pipelines was incredibly insightful!"
+              </blockquote>
+              <div class="testimonial-footer">
+                <div class="reviewer-info">
+                  <span class="reviewer-name">Topmate Mentee</span>
+                  <span class="reviewer-role">ML Engineer Aspirant</span>
+                </div>
+                <button class="proof-btn" data-proof-img="assets/topmate.png" data-proof-title="Topmate Mentorship Review Proof" data-proof-caption="Verified 5-Star Feedback on Topmate 1-on-1 Advisory Session">
+                  📸 View Proof
+                </button>
+              </div>
+            </div>
+
+            <!-- Email Feedback 1 -->
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <span class="badge platform-badge email-badge">
+                  <img src="assets/gmail.webp" alt="Email" class="badge-icon" /> Email Feedback
+                </span>
+                <div class="star-rating" aria-label="5 out of 5 stars">★★★★★</div>
+              </div>
+              <blockquote class="testimonial-quote">
+                "Hi Dheeraj, I read your LLM Playbook book and used your vLLM optimization tips in our team's inference stack. Latency dropped drastically! Thanks for sharing your research."
+              </blockquote>
+              <div class="testimonial-footer">
+                <div class="reviewer-info">
+                  <span class="reviewer-name">Direct Email Reader</span>
+                  <span class="reviewer-role">AI Software Engineer</span>
+                </div>
+                <button class="proof-btn" data-proof-img="assets/book2.jpeg" data-proof-title="Email Reader Feedback Proof" data-proof-caption="Direct Email Correspondence & Reader Appreciation for LLM Playbook">
+                  📸 View Proof
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       <!-- PET PROJECTS SECTION -->
       <section id="projects" class="section-block">
         <div class="section-header collapsible-header" role="button" aria-expanded="true" tabindex="0">
@@ -850,6 +935,19 @@
       </section>
 
     </main>
+
+    <!-- Proof Lightbox Modal -->
+    <div class="proof-modal" id="proofModal" role="dialog" aria-hidden="true" aria-labelledby="proofModalTitle">
+      <div class="proof-modal-overlay" id="proofModalOverlay"></div>
+      <div class="proof-modal-container">
+        <button class="proof-modal-close" id="proofModalClose" aria-label="Close proof view">&times;</button>
+        <h4 class="proof-modal-title" id="proofModalTitle">Verified Testimonial Proof</h4>
+        <div class="proof-modal-img-wrapper">
+          <img src="" alt="Proof Screenshot" id="proofModalImg" class="proof-modal-img" />
+        </div>
+        <p class="proof-modal-caption" id="proofModalCaption"></p>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
