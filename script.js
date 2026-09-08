@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCollapsibleSections();
   initSearchAndFilters();
   initTerminal();
+  initProofLightbox();
 });
 
 /* ==========================================
@@ -254,7 +255,56 @@ function initSearchAndFilters() {
 }
 
 /* ==========================================
-   4. Interactive Terminal (Modal CLI)
+   4. Proof Lightbox Modal Handler
+   ========================================== */
+function initProofLightbox() {
+  const modal = document.getElementById('proofModal');
+  const overlay = document.getElementById('proofModalOverlay');
+  const closeBtn = document.getElementById('proofModalClose');
+  const modalImg = document.getElementById('proofModalImg');
+  const modalTitle = document.getElementById('proofModalTitle');
+  const modalCaption = document.getElementById('proofModalCaption');
+  const proofBtns = document.querySelectorAll('.proof-btn');
+
+  if (!modal || !modalImg) return;
+
+  function openProofModal(imgSrc, titleText, captionText) {
+    if (modalImg) modalImg.src = imgSrc;
+    if (modalTitle) modalTitle.textContent = titleText || 'Verified Testimonial Proof';
+    if (modalCaption) modalCaption.textContent = captionText || '';
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeProofModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+
+  proofBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const imgSrc = btn.getAttribute('data-proof-img');
+      const titleText = btn.getAttribute('data-proof-title');
+      const captionText = btn.getAttribute('data-proof-caption');
+      if (imgSrc) {
+        openProofModal(imgSrc, titleText, captionText);
+      }
+    });
+  });
+
+  if (overlay) overlay.addEventListener('click', closeProofModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeProofModal);
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeProofModal();
+    }
+  });
+}
+
+/* ==========================================
+   5. Interactive Terminal (Modal CLI)
    ========================================== */
 function initTerminal() {
   const modal = document.getElementById('termModal');
