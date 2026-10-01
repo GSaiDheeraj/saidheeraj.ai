@@ -147,7 +147,7 @@ a:hover { text-decoration: underline; }
   overflow: hidden;
 }
 .hero-avatar {
-  width: 104px; height: 104px; object-fit: cover; object-position: top center;
+  width: 158px; height: 158px; object-fit: cover; object-position: top center;
   border-radius: 50%; border: none; display: block;
   background: var(--surface-2);
 }
@@ -160,8 +160,8 @@ a:hover { text-decoration: underline; }
 }
 .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(25, 134, 57, 0.15); }
 .hero-name {
-  font-size: clamp(2.9rem, 7vw, 4.4rem);
-  line-height: 0.98; letter-spacing: -0.045em; font-weight: 800;
+  font-size: clamp(2.4rem, 5vw, 3.5rem);
+  line-height: 1.02; letter-spacing: -0.04em; font-weight: 800;
 }
 .hero-subtitle { font-size: 1.22rem; line-height: 1.5; color: var(--ink-2); margin: 18px 0 10px; max-width: 640px; }
 .hero-centered .hero-subtitle { margin-left: auto; margin-right: auto; }
@@ -461,7 +461,7 @@ kbd { font-family: var(--mono); background: var(--surface-2); border: 1px solid 
 }
 @media (max-width: 600px) {
   .main-wrapper { padding: 108px 18px 24px; }
-  .hero-name { font-size: 2.6rem; }
+  .hero-name { font-size: 2rem; }
   .stats-min { flex-wrap: nowrap; gap: 0; }
   .stats-min .stat-item { padding-right: 10px; }
   .stats-min .stat-item + .stat-item { padding-left: 10px; }
