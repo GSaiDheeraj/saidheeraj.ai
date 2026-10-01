@@ -83,7 +83,7 @@ function initPhysicsCanvas() {
     mouse.active = false;
   });
 
-  const particleCount = Math.min(Math.floor((width * height) / 18000), 75);
+  const particleCount = Math.min(Math.floor((width * height) / 32000), 42);
   const particles = [];
 
   for (let i = 0; i < particleCount; i++) {
@@ -140,7 +140,7 @@ function initPhysicsCanvas() {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       ctx.fillStyle = p.color;
-      ctx.globalAlpha = isDark ? 0.65 : 0.45;
+      ctx.globalAlpha = isDark ? 0.4 : 0.28;
       ctx.fill();
 
       // Draw connection lines between nearby particles
@@ -172,13 +172,13 @@ function initPhysicsCanvas() {
    1. Theme Toggle & Persistence
    ========================================== */
 function initTheme() {
-  const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+  const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
   document.documentElement.setAttribute('data-theme', savedTheme);
   updateThemeIcon(savedTheme);
 }
 
 function toggleTheme() {
-  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', newTheme);
   localStorage.setItem('portfolio-theme', newTheme);
@@ -304,131 +304,110 @@ function initProofLightbox() {
 }
 
 /* ==========================================
-   5. Interactive Terminal (Modal CLI)
+   5. Dheeraj AI — chat assistant (chat bubbles, no bash)
    ========================================== */
 function initTerminal() {
   const modal = document.getElementById('termModal');
   const cmdTrigger = document.getElementById('cmdTrigger');
+  const chatFab = document.getElementById('chatFab');
   const termInput = document.getElementById('termInput');
   const termBody = document.getElementById('termBody');
+  const chatSend = document.getElementById('chatSend');
+  const chatQuick = document.getElementById('chatQuick');
+  const heroSearch = document.getElementById('heroSearch');
 
-  if (!modal || !cmdTrigger || !termInput) return;
+  if (heroSearch) {
+    heroSearch.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      const q = heroSearch.value.trim().toLowerCase();
+      if (!q) return;
+      const paperSearch = document.getElementById('paperSearch');
+      const projectSearch = document.getElementById('projectSearch');
+      if (paperSearch) {
+        paperSearch.value = heroSearch.value;
+        paperSearch.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      if (projectSearch) {
+        projectSearch.value = heroSearch.value;
+        projectSearch.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      const target = document.getElementById('projects') || document.getElementById('publications');
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  if (!modal || !termInput || !termBody) return;
 
   function openTerminal() {
     modal.classList.add('active');
-    termInput.focus();
+    if (!termBody.dataset.greeted) {
+      termBody.dataset.greeted = '1';
+      botSay('Hey, I\'m <strong>Dheeraj AI</strong> ✦ — ask me about roles, research, books, or where to follow along.');
+      botSay('Try: “experience”, “papers”, “books”, “contact”, or “instagram”.');
+    }
+    setTimeout(() => termInput.focus(), 60);
   }
 
   function closeTerminal() {
     modal.classList.remove('active');
   }
 
-  cmdTrigger.addEventListener('click', openTerminal);
+  if (cmdTrigger) cmdTrigger.addEventListener('click', openTerminal);
+  if (chatFab) chatFab.addEventListener('click', () => {
+    modal.classList.contains('active') ? closeTerminal() : openTerminal();
+  });
 
-  // Keyboard shortcut Ctrl+K or Cmd+K or `~`
   window.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
       modal.classList.contains('active') ? closeTerminal() : openTerminal();
     }
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeTerminal();
-    }
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeTerminal();
   });
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeTerminal(); });
 
-  // Global close terminal function
   window.closeTerminal = closeTerminal;
 
-  // Command Execution Handler
-  termInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      const rawCmd = termInput.value.trim();
-      termInput.value = '';
-      if (!rawCmd) return;
+  function scrollDown() { termBody.scrollTop = termBody.scrollHeight; }
 
-      appendTermLine(`guest@dheeraj-ai:~$ ${rawCmd}`, 'command');
-      processCommand(rawCmd.toLowerCase());
-      termBody.scrollTop = termBody.scrollHeight;
-    }
-  });
+  function addBubble(html, who) {
+    const row = document.createElement('div');
+    row.className = 'chat-row ' + who;
+    const b = document.createElement('div');
+    b.className = 'chat-bubble';
+    b.innerHTML = html;
+    row.appendChild(b);
+    termBody.appendChild(row);
+    scrollDown();
+  }
+  function botSay(html) { addBubble(html, 'bot'); }
 
-  function appendTermLine(text, type = 'output') {
-    const line = document.createElement('div');
-    line.className = 'term-line';
-    if (type === 'command') {
-      line.style.color = '#58a6ff';
-      line.style.fontWeight = 'bold';
-    } else if (type === 'error') {
-      line.style.color = '#f85149';
-    } else if (type === 'success') {
-      line.style.color = '#7ee787';
-    } else {
-      line.style.color = '#c9d1d9';
-    }
-    line.innerHTML = text;
-    termBody.appendChild(line);
+  function send(text) {
+    const msg = (text !== undefined ? text : termInput.value).trim();
+    if (!msg) return;
+    termInput.value = '';
+    addBubble(msg.replace(/</g, '&lt;'), 'user');
+    setTimeout(() => botSay(answerFor(msg.toLowerCase())), 220);
   }
 
-  function processCommand(cmd) {
-    const parts = cmd.split(' ');
-    const mainCmd = parts[0];
+  termInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') send(); });
+  if (chatSend) chatSend.addEventListener('click', () => send());
+  if (chatQuick) chatQuick.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-q]');
+    if (btn) send(btn.getAttribute('data-q'));
+  });
 
-    switch (mainCmd) {
-      case 'help':
-        appendTermLine('Available Commands:', 'success');
-        appendTermLine('&nbsp;&nbsp;<span class="term-cmd-highlight">about</span>      - Quick bio summary');
-        appendTermLine('&nbsp;&nbsp;<span class="term-cmd-highlight">exp</span>        - Work experience summary');
-        appendTermLine('&nbsp;&nbsp;<span class="term-cmd-highlight">pubs</span>       - Research papers & patents count');
-        appendTermLine('&nbsp;&nbsp;<span class="term-cmd-highlight">skills</span>     - AI/ML & Engineering skill keywords');
-        appendTermLine('&nbsp;&nbsp;<span class="term-cmd-highlight">contact</span>    - Social links & email');
-        appendTermLine('&nbsp;&nbsp;<span class="term-cmd-highlight">theme</span>      - Toggle light/dark mode');
-        appendTermLine('&nbsp;&nbsp;<span class="term-cmd-highlight">clear</span>      - Clear terminal screen');
-        appendTermLine('&nbsp;&nbsp;<span class="term-cmd-highlight">exit</span>       - Close terminal window');
-        break;
-
-      case 'about':
-        appendTermLine('Sai Dheeraj Gummadi — Software Engineer-3 (AI/ML) @ FactSet.');
-        appendTermLine('M.Sc. Data Science (IU Germany) & M.A. Economics (Andhra Univ). 8 IEEE/Springer Papers, 1 Granted US Patent.');
-        break;
-
-      case 'exp':
-        appendTermLine('• <span class="term-cmd-highlight">FactSet</span> (Jan 2026 - Present): SE-3 AI/ML — Financial Data Extractions');
-        appendTermLine('• <span class="term-cmd-highlight">Motorola Solutions</span> (Jul 2024 - Jan 2026): SE-1 AI/ML — RAG & FinOps');
-        appendTermLine('• <span class="term-cmd-highlight">Brane Enterprises</span> (Nov 2023 - Jul 2024): Deep Learning Eng — Distilled LLMs & vLLM');
-        appendTermLine('• <span class="term-cmd-highlight">HighRadius</span> (Aug 2021 - Oct 2023): Data Scientist — LayoutLM & Document OCR');
-        break;
-
-      case 'pubs':
-        appendTermLine('1 US Patent Office 18/396,772 Granted (2026).');
-        appendTermLine('8 Research Publications across IEEE, Springer, TechRxiv.');
-        appendTermLine('Scholar Link: <a href="https://scholar.google.com/citations?user=ERJe5ugAAAAJ&hl=en" target="_blank" style="color:#58a6ff;">Google Scholar Profile</a>');
-        break;
-
-      case 'skills':
-        appendTermLine('LLMs, RAG, PyTorch, Gemini 1.5, GPT-4o, Ray Serve, vLLM, LayoutLM, YOLO, OpenCV, Kubernetes, Financial Modeling.');
-        break;
-
-      case 'contact':
-        appendTermLine('Email: dheerajsaigummadi@gmail.com');
-        appendTermLine('GitHub: <a href="https://github.com/GSaiDheeraj" target="_blank" style="color:#58a6ff;">GSaiDheeraj</a> | LinkedIn: <a href="https://www.linkedin.com/in/gummadi-saidheeraj/" target="_blank" style="color:#58a6ff;">gummadi-saidheeraj</a>');
-        break;
-
-      case 'theme':
-        toggleTheme();
-        appendTermLine('Switched theme mode!', 'success');
-        break;
-
-      case 'clear':
-        termBody.innerHTML = '';
-        break;
-
-      case 'exit':
-        closeTerminal();
-        break;
-
-      default:
-        appendTermLine(`Command not found: '${mainCmd}'. Type '<span class="term-cmd-highlight">help</span>' for options.`, 'error');
-        break;
-    }
+  function answerFor(q) {
+    if (/(hi|hello|hey|yo)\b/.test(q)) return 'Hey! Ask me about <strong>experience</strong>, <strong>papers</strong>, <strong>books</strong>, or <strong>contact</strong>.';
+    if (q.includes('about') || q.includes('yourself') || q.includes('who are')) return '<strong>Sai Dheeraj Gummadi</strong> — Lead Data Scientist @ The Hartford. Applied AI: LLMs, RAG, document intelligence. 2 master\'s, 8 papers, 1 US patent, 2 books.';
+    if (q.includes('exp') || q.includes('work') || q.includes('role') || q.includes('job')) return '<strong>The Hartford</strong> (now) · <strong>FactSet</strong> SE-3 AI/ML · <strong>Motorola</strong> RAG + FinOps · <strong>Brane</strong> distilled LLMs · <strong>HighRadius</strong> LayoutLM + OCR. Scroll to Experience for details.';
+    if (q.includes('paper') || q.includes('research') || q.includes('pub') || q.includes('patent')) return '1 granted US patent (18/396,772) + 8 papers across IEEE, Springer, TechRxiv. See the Research section or <a href="https://scholar.google.com/citations?user=ERJe5ugAAAAJ&hl=en" target="_blank">Scholar</a>.';
+    if (q.includes('book')) return '2 books on Amazon: <strong>Cracking Data Science Case Study Interview</strong> + <strong>The Complete Hands-On Language Models Playbook</strong>. See Books & Talks.';
+    if (q.includes('skill')) return 'LLMs · RAG · PyTorch · Gemini · GPT-4o · vLLM · LayoutLM · YOLO · K8s · FinOps · quant modeling.';
+    if (q.includes('insta') || q.includes('creator') || q.includes('follow') || q.includes('reel')) return 'Follow <a href="https://www.instagram.com/saidheeraj.ai/" target="_blank">@saidheeraj.ai</a> — 60-second LLM breakdowns, paper-to-prod notes, career playbooks.';
+    if (q.includes('contact') || q.includes('email') || q.includes('hire') || q.includes('collab')) return 'Email: dheerajsaigummadi@gmail.com · <a href="https://www.instagram.com/saidheeraj.ai/" target="_blank">Instagram</a> · <a href="https://www.linkedin.com/in/gummadi-saidheeraj/" target="_blank">LinkedIn</a> · <a href="https://github.com/GSaiDheeraj" target="_blank">GitHub</a>';
+    if (q.includes('theme') || q.includes('dark') || q.includes('light')) { toggleTheme(); return 'Done — theme switched. Minimal looks good either way.'; }
+    if (q.includes('thank')) return 'Anytime! Want papers, projects, or contact?';
+    return 'I can help with <strong>about, experience, research, books, skills, instagram,</strong> or <strong>contact</strong> — what do you want to know?';
   }
 }
