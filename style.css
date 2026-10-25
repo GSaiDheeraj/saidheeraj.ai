@@ -109,7 +109,7 @@ a:hover { text-decoration: underline; }
 }
 .nav-brand { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.03em; color: var(--ink); }
 .nav-brand:hover { text-decoration: none; }
-.blink { color: var(--green); animation: blinkAnim 1.6s infinite; }
+.blink { color: var(--blue); animation: blinkAnim 1.6s infinite; }
 @keyframes blinkAnim { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
 .nav-links { display: flex; gap: 2px; align-items: center; }
 .nav-link {
@@ -202,13 +202,21 @@ a:hover { text-decoration: underline; }
 .cta-secondary:hover { border-color: var(--ink); text-decoration: none; transform: translateY(-2px); }
 .cta-icon { width: 18px; height: 18px; object-fit: contain; border-radius: 50%; }
 
-.social-row { display: flex; gap: 9px; margin-bottom: 30px; flex-wrap: wrap; }
-.hero-centered .social-row { justify-content: center; max-width: 640px; }
+/* Grid: 2 rows × 3 columns on monitor/tablet, equal-length bubbles */
+.social-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin-bottom: 30px;
+  align-items: stretch;
+}
+.hero-centered .social-row { max-width: 720px; }
 .social-pill {
-  display: inline-flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 8px;
+  min-width: 0;
   background: var(--surface); border: 1px solid var(--line);
   color: var(--ink-2); font-size: 0.82rem; font-weight: 650;
-  padding: 9px 15px; border-radius: var(--r-pill);
+  padding: 9px 12px; border-radius: var(--r-pill);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   white-space: nowrap;
 }
@@ -462,6 +470,15 @@ kbd { font-family: var(--mono); background: var(--surface-2); border: 1px solid 
 @media (max-width: 600px) {
   .main-wrapper { padding: 108px 18px 24px; }
   .hero-name { font-size: 2rem; }
+  /* Social grid: 3 rows × 2 columns on mobile, equal-length bubbles */
+  .social-row { grid-template-columns: repeat(2, 1fr); gap: 8px; max-width: none; }
+  .social-pill {
+    font-size: 0.72rem; font-weight: 700;
+    padding: 9px 10px; gap: 7px;
+    white-space: normal; line-height: 1.2;
+    justify-content: center; text-align: left;
+  }
+  .social-pill img, .social-pill svg { width: 15px; height: 15px; }
   .stats-min { flex-wrap: nowrap; gap: 0; }
   .stats-min .stat-item { padding-right: 10px; }
   .stats-min .stat-item + .stat-item { padding-left: 10px; }
